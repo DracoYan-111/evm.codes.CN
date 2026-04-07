@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex justify-between text-tiny text-gray-500 items-start">
           <div className="flex flex-col md:flex-row leading-6">
             <span>
-              Brought to you by{' '}
+              为您带来{' '}
               <a
                 className="underline font-medium"
                 href="https://dune.com/home"
@@ -22,7 +22,7 @@ const Footer = () => {
             </span>
 
             <span className="md:mx-2">
-              Powered by{' '}
+              供应{' '}
               <a
                 className="underline font-medium"
                 href="https://github.com/ethereumjs/ethereumjs-monorepo"
@@ -31,7 +31,7 @@ const Footer = () => {
               >
                 EthereumJS
               </a>{' '}
-              and{' '}
+              和{' '}
               <a
                 className="underline font-medium"
                 href="https://github.com/ethereum/solc-js"

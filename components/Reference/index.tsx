@@ -129,7 +129,7 @@ const ReferenceTable = ({
           className="text-gray-800 dark:text-gray-200"
         >
           <span className="text-sm font-normal">
-            {isAllRowsExpanded ? 'Collapse' : 'Expand'}
+            {isAllRowsExpanded ? '收起' : '展开'}
           </span>
           <Icon
             className="text-indigo-500"
@@ -266,7 +266,7 @@ const ReferenceTable = ({
                           !!dynamicFeeForkName && (
                             <span
                               className="inline-block pl-2 text-gray-400 dark:text-black-400"
-                              data-tooltip-content="Has additional dynamic gas cost, expand to estimate it"
+                              data-tooltip-content="有额外的动态气体成本，扩展以估计它"
                               data-tooltip-id={`tip-${cell.row.id}`}
                             >
                               <Icon name="question-line" />

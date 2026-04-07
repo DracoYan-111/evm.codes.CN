@@ -22,7 +22,7 @@ const columns = (isPrecompiled: boolean) => [
     width: 48,
   },
   {
-    Header: 'Name',
+    Header: '名称',
     accessor: 'name',
     filter,
     width: 80,
@@ -33,7 +33,7 @@ const columns = (isPrecompiled: boolean) => [
     width: 50,
   },
   {
-    Header: !isPrecompiled ? 'Stack Input' : 'Input',
+    Header: !isPrecompiled ? '堆栈输入' : '输入',
     accessor: 'input',
     Cell: ({ value }: { value: string }) => (
       <StackBox
@@ -45,7 +45,7 @@ const columns = (isPrecompiled: boolean) => [
     className: 'hidden lg:table-cell',
   },
   {
-    Header: !isPrecompiled ? 'Stack Output' : 'Output',
+    Header: !isPrecompiled ? '堆栈输出' : '输出',
     accessor: 'output',
     Cell: ({ value }: { value: string }) => (
       <StackBox
@@ -57,7 +57,7 @@ const columns = (isPrecompiled: boolean) => [
     className: 'hidden lg:table-cell',
   },
   {
-    Header: 'Description',
+    Header: '描述',
     accessor: 'description',
     className: 'hidden md:table-cell',
   },

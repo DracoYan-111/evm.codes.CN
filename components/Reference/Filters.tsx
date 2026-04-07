@@ -76,7 +76,7 @@ const Filters = ({ onSetFilter, isPrecompiled = false }: Props) => {
   return (
     <div className="flex items-center md:justify-end">
       <span className="hidden md:inline-block text-sm text-gray-400 mr-3">
-        Search by
+        搜索依据
       </span>
 
       <div className="bg-gray-100 dark:bg-black-500 rounded mr-3 pl-2 pr-1">
@@ -99,7 +99,7 @@ const Filters = ({ onSetFilter, isPrecompiled = false }: Props) => {
           setSearchKeyword(e.target.value)
           handleKeywordChange(e.target.value)
         }}
-        placeholder={`Enter keyword...`}
+        placeholder={`输入关键字...`}
         className="bg-gray-100 dark:bg-black-500"
       />
     </div>
