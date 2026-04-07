@@ -2,73 +2,73 @@
   <h1 align="center">EVM.Codes</h1>
 </p>
 <p align="center">
-  <strong><i>An interactive reference to Ethereum Virtual Machine Opcodes</i></strong>
+  <strong><i>以太坊虚拟机（EVM）操作码的交互式参考指南</i></strong>
   <img width="1408" alt="screenshot" src="https://user-images.githubusercontent.com/5113/142245431-08ad9922-9115-43fd-9572-8b33cde75bb0.png">
 </p>
 
-This is the source code that runs [evm.codes](https://evm.codes) web application. Below you will find the docs on how to contribute to the project and get it up and running locally for further development.
+这是运行 [evm.codes](https://evm.codes) 网络应用程序的源代码。您可以在下面找到有关如何为项目做出贡献并在本地运行它以进行进一步开发的文档。
 
-evm.codes is brought to you by [Dune](https://dune.com/home), powered by open-source projects such as [EthereumJS](https://github.com/ethereumjs/ethereumjs-monorepo), [SolcJS](https://github.com/ethereum/solc-js) and [many others](package.json).
+evm.codes 由 [Dune](https://dune.com/home) 为您提供，由 [EthereumJS](https://github.com/ethereumjs/ethereumjs-monorepo)、[SolcJS](https://github.com/ethereum/solc-js) 及其它 [许多开源项目](package.json) 提供技术支持。
 
-## ⚙️ Installation
+## ⚙️ 安装
 
-The app requires the following dependencies:
+该应用程序需要以下依赖项：
 
 - [NodeJS](https://nodejs.org/) >= 20
 - [pnpm](https://pnpm.io/)
 
-## 👩‍💻 Local Development
+## 👩‍💻 本地开发
 
-For contributing to the project, you can quickly get the application running by following these steps:
+为该项目做贡献，您可以按照以下步骤快速启动和运行应用程序：
 
-Clone this repository:
+克隆此仓库：
 
     git clone git@github.com:duneanalytics/evm.codes.git
 
-Install the dependencies:
+安装依赖项：
 
     pnpm install
 
-Specify the environment variables if you want to run the contract viewer in `.env.local`
+如果您想运行合约浏览器，请在 `.env.local` 中指定环境变量：
 
     APIKEY_ETHERSCAN=
 
-Start up the app and see it running at <http://localhost:3000>
+启动应用程序并访问 <http://localhost:3000> 查看运行效果：
 
     pnpm dev
 
-## 🚀 Deploying
+## 🚀 部署
 
-Deployments are handled automatically by [Vercel](https://vercel.com/), as soon as your PR is merged to `main`.
+只要您的 PR 被合并到 `main` 分支，部署就会由 [Vercel](https://vercel.com/) 自动处理。
 
-## 🤗 Contributing
+## 🤗 参与贡献
 
-evm.codes is built and maintained by a small team, so we would definitely love your help to fix bugs, add new features and improvements, or update EVM [reference docs](docs/opcodes).
+evm.codes 由一个小团队构建和维护，因此我们非常欢迎你的帮助来修复 Bug、添加新功能和改进，或更新 EVM [参考文档](docs/opcodes)。
 
-Before you submit a pull request, please make sure there isn't an existing [GitHub issue](https://github.com/duneanalytics/evm.codes/issues). If there isn't, create one first to discuss the best way to approach it and also get some feedback from the team.
+在提交拉取请求（Pull Request）之前，请确保没有现成的 [GitHub issue](https://github.com/duneanalytics/evm.codes/issues)。如果没有，请先创建一个 issue，探讨解决该问题的最佳方法，并听取团队的一些反馈意见。
 
-Once you are about to submit a pull request, prefix the name with either `chore:` (small improvements and regular maintenance), `fix:` (bugs and hot fixes), or `feat:` (new features) to help us quickly look up the type of the issue from the Git history.
+准备提交拉取请求时，请以 `chore:`（小改进和定期维护）、`fix:`（Bug 和热修复）或 `feat:`（新功能）开头，以帮助我们直接从 Git 历史记录中找到该问题的类型。
 
-### Coding conventions
+### 编码规范
 
-The project is already pre-configured with [Eslint](.eslintrc.js), [TypeScript](tsconfig.json), and [Prettier](.prettierrc). Here are some useful commands you can run to ensure your changes follow the project's coding conventions:
+项目已预先配置了 [Eslint](.eslintrc.js)、[TypeScript](tsconfig.json) 和 [Prettier](.prettierrc)。以下是一些有用的命令，可以确保您的更改符合项目的编码规范：
 
-Check for any linting issues and fix:
+检查并修复任何代码规范问题：
 
     pnpm lint --fix
 
-Check for any TypeScript issues:
+检查任何 TypeScript 类型问题：
 
     pnpm typecheck
 
-Sort the `package.json`:
+对 `package.json` 进行排序：
 
     pnpm lint:package
 
-## Architecture
+## 架构
 
-If you would like to contribute, make sure to check the [architecture document](docs/ARCHITECTURE.md) to learn about the code structure, and how the app is built.
+如果您想做出贡献，请务必查看 [架构文档](docs/ARCHITECTURE.md)，以了解代码结构和应用程序的构建方式。
 
-## License
+## 许可证
 
 [MIT](LICENSE)
