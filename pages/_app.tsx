@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
 
+import { Analytics } from '@vercel/analytics/react'
 import { KBarProvider } from 'kbar'
 import useActions from 'lib/useActions'
 import type { NextPage } from 'next'
@@ -42,6 +43,7 @@ const Main = ({ Component, pageProps }: AppPropsWithLayout) => {
           </EthereumProvider>
         </SettingsProvider>
       </ThemeProvider>
+      <Analytics />
     </PlausibleProvider>
   )
 }
