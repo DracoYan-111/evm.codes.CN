@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 
-import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { KBarProvider } from 'kbar'
 import useActions from 'lib/useActions'
 import type { NextPage } from 'next'
