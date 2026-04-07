@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
 
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import { KBarProvider } from 'kbar'
 import useActions from 'lib/useActions'
@@ -43,6 +44,7 @@ const Main = ({ Component, pageProps }: AppPropsWithLayout) => {
           </EthereumProvider>
         </SettingsProvider>
       </ThemeProvider>
+      <SpeedInsights />
       <Analytics />
     </PlausibleProvider>
   )
