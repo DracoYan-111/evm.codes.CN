@@ -2,30 +2,26 @@
 fork: Prague
 ---
 
-## Notes
+## 注释
 
-BLS12-381 map field element to G1 precompile maps base field elements (Fp) into G1 points. This operation is required for signature schemes and performs field arithmetic to map a field element into a curve point.
-
-This precompile does NOT perform mapping of byte strings into field elements - it only handles the field-to-point mapping. The mapping uses the Simplified Weighted Sum (SWU) method with parameters specified in EIP-2537. More information can be found in [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537).
-
+BLS12-381 将字段元素映射到 G1 预编译将基本字段元素 (Fp) 映射到 G1 点。此操作是签名方案所必需的，并执行字段算术以将字段元素映射到曲线点。
+此预编译不执行字节字符串到字段元素的映射 -它只处理字段到点的映射。该映射使用简化加权和 (SWU) 方法，其参数在 EIP-2537 中指定。更多信息可以在 [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) 中找到。
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | field_element | Base field element (Fp) to map to G1 |
+| `[0; 63]` (64 bytes) | field_element | 映射到 G1 的基场元素 (Fp) |
 
-Input must be exactly 64 bytes. The field element must be a valid element of the BLS12-381 base field (less than the field modulus).
-
+输入必须正好是 64 字节。字段元素必须是 BLS12-381 基本字段的有效元素（小于字段模数）。
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | x | X coordinate of mapped G1 point |
-| `[64; 127]` (64 bytes) | y | Y coordinate of mapped G1 point |
+| `[0; 63]` (64 bytes) | x | 映射G1点的X坐标 |
+| `[64; 127]` (64 bytes) | y | 映射G1点的Y坐标 |
 
-Returns a G1 point that is the deterministic mapping of the input field element. The output point is guaranteed to be in the correct G1 subgroup. Gas cost: **5,500 gas**. If the input is not valid, all gas provided is consumed and there is no return data, indicating a precompile contract error.
-
-## Example
+返回一个 G1 点，它是输入字段元素的确定性映射。保证输出点位于正确的 G1 子组中。天然气成本：**5,500 天然气**。如果输入无效，则提供的所有gas都会被消耗，并且没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

@@ -2,28 +2,26 @@
 fork: Frontier
 ---
 
-## Notes
+## 注释
 
-More information about ECDSA can be found [here](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) or in Ethereum [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf), appendix F.
-
+有关 ECDSA 的更多信息可以在[此处](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) 或以太坊[黄皮书](https://ethereum.github.io/yellowpaper/paper.pdf) 附录 F 中找到。
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 31]` (32 bytes) | hash | Keccack-256 hash of the transaction |
-| `[32; 63]` (32 bytes) | v | Recovery identifier, expected to be either 27 or 28 |
-| `[64; 95]` (32 bytes) | r | x-value, expected to be in the range `]0; secp256k1n[` |
-| `[96; 127]` (32 bytes) | s | Expected to be in the range `]0; secp256k1n[` |
+| `[0; 31]` (32 bytes) | hash | 交易的 Keccak-256 哈希值 |
+| `[32; 63]` (32 bytes) | v | 恢复标识符，预计为 27 或 28 |
+| `[64; 95]` (32 bytes) | r | x 值，预计在范围`]0 内； secp256k1n[` |
+| `[96; 127]` (32 bytes) | s | 预计在范围 `]0 内； secp256k1n[`|
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| [0; 31] (32 bytes) | publicAddress | The recovered 20-byte address right aligned to 32 bytes |
+| [0; 31] (32 bytes) | publicAddress | 恢复的20字节地址右对齐到32字节 |
 
-If an address cannot be recovered or not enough gas was given, then there is no return data, indicating a precompile contract error. Please note, that the return data is the address that issued the signature but it won't verify the signature.
-
-## Example
+如果地址无法恢复或者没有提供足够的gas，则没有返回数据，表明预编译合约错误。请注意，返回数据是发出签名的地址，但不会验证签名。
+## 例子
 
 | Input | Output |
 |------:|-------:|

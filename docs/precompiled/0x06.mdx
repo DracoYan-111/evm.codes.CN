@@ -2,30 +2,27 @@
 fork: Byzantium
 ---
 
-## Notes
+## 注释
 
-The point at infinity is encoded with both field `x` and `y` at `0`.
-
+无穷远点用字段“x”和“y”编码为“0”。
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 31]` (32 bytes) | x1 | X coordinate of the first point on the elliptic curve 'alt_bn128'|
-| `[32; 63]` (32 bytes) | y1 | Y coordinate of the first point on the elliptic curve 'alt_bn128' |
-| `[64; 95]` (32 bytes) | x2 | X coordinate of the second point on the elliptic curve 'alt_bn128' |
-| `[96; 127]` (32 bytes) | y2 | Y coordinate of the second point on the elliptic curve 'alt_bn128' |
+| `[0; 31]` (32 bytes) | x1 | 椭圆曲线'alt_bn128'上第一个点的X坐标|
+| `[32; 63]` (32 bytes) | y1 |椭圆曲线'alt_bn128'上第一个点的Y坐标 |
+| `[64; 95]` (32 bytes) | x2 | 椭圆曲线'alt_bn128'上第二个点的X坐标 |
+| `[96; 127]` (32 bytes) | y2 |椭圆曲线'alt_bn128'上第二个点的X坐标
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 31]` (32 bytes) | x | X coordinate of the result point on the elliptic curve 'alt_bn128' |
-| `[32; 63]` (32 bytes) | y | Y coordinate of the result point on the elliptic curve 'alt_bn128' |
+| `[0; 31]` (32 bytes) | x | 椭圆曲线'alt_bn128'上结果点的X坐标|
+| `[32; 63]` (32 bytes) | y |椭圆曲线'alt_bn128'上结果点的Y坐标 |
 
-If the input is not valid, all gas provided is consumed and there is no return data, indicating a precompile contract error. Also, if not enough gas was given, there is no return data.
-
-## Example
-
+如果输入无效，则提供的所有gas都会被消耗，并且没有返回数据，表明预编译合约错误。此外，如果没有提供足够的气体，则没有返回数据。
+## 例子
 | Input | Output |
 |------:|-------:|
 | `1` | `0x030644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd3` |

@@ -2,7 +2,6 @@
 
     static_gas = 6900
     dynamic_gas = 0
+根据 ECRECOVER 预编译（3000 Gas）的基准，Gas 成本固定为 6900 Gas。发现 secp256r1 验证的实际成本明显高于 secp256k1 恢复。
 
-The gas cost is fixed at 6900 gas based on benchmarking against the ECRECOVER precompile (3000 gas). The actual cost of secp256r1 verification was found to be significantly higher than secp256k1 recovery.
-
-If the input does not allow computation of a valid result (invalid inputs or verification failure), all the gas sent is consumed.
+如果输入不允许计算有效结果（无效输入或验证失败），则发送的所有气体都会被消耗。

@@ -2,38 +2,33 @@
 fork: Prague
 ---
 
-## Notes
+## 注释
 
-BLS12-381 pairing check precompile performs pairing operations between G1 and G2 points. It verifies whether the product of pairings equals the identity element in GT (the target group). This operation is fundamental for BLS signature verification and zero-knowledge proof systems.
-
-The pairing is a bilinear map: `e: G1 × G2 → GT`. The precompile checks if `e(P1, Q1) * e(P2, Q2) * ... * e(Pk, Qk) = 1_GT`. More information can be found in [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537).
-
+BLS12-381 配对检查预编译在 G1 和 G2 点之间执行配对操作。它验证配对的乘积是否等于GT（目标组）中的单位元素。此操作是 BLS 签名验证和零知识证明系统的基础。
+该配对是双线性映射：`e: G1 × G2 → GT`。预编译检查是否 `e(P1, Q1) *e(P2, Q2) *... *e(Pk, Qk) = 1_GT`。更多信息可以在 [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) 中找到。
 ## Inputs
 
-The input consists of pairs of G1 and G2 points. Input length must be a multiple of 384 bytes (128 bytes for G1 point + 256 bytes for G2 point).
+输入由成对的 G1 和 G2 点组成。输入长度必须是 384 字节的倍数（G1 点 128 字节 + G2 点 256 字节）。
 
-For each 384-byte pair:
-
-| Byte range | Name | Description |
+对于每个 384 字节对：
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | g1_x | X coordinate of G1 point |
-| `[64; 127]` (64 bytes) | g1_y | Y coordinate of G1 point |
-| `[128; 191]` (64 bytes) | g2_x_c0 | X coordinate c0 component of G2 point |
-| `[192; 255]` (64 bytes) | g2_x_c1 | X coordinate c1 component of G2 point |
-| `[256; 319]` (64 bytes) | g2_y_c0 | Y coordinate c0 component of G2 point |
-| `[320; 383]` (64 bytes) | g2_y_c1 | Y coordinate c1 component of G2 point |
+| `[0; 63]` (64 bytes) | g1_x | G1点X坐标 |
+| `[64; 127]` (64 bytes) | g1_y | G1点Y坐标 |
+| `[128; 191]` (64 bytes) | g2_x_c0 | G2点的X坐标c0分量 |
+| `[192; 255]` (64 bytes) | g2_x_c1 | G2点的X坐标c1分量 |
+| `[256; 319]` (64 bytes) | g2_y_c0 | G2点的Y坐标c0分量 |
+| `[320; 383]` (64 bytes) | g2_y_c1 | G2点的Y坐标c1分量|
 
-All input points must be valid curve points and in the correct subgroups. Empty input (0 bytes) is valid and returns success.
-
+所有输入点必须是有效的曲线点并且位于正确的子组中。空输入（0 字节）有效并返回成功。
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 31]` (32 bytes) | result | Pairing check result (1 if pairing product equals identity, 0 otherwise) |
+| `[0; 31]` (32 bytes) | result | 配对检查结果（如果配对产品等于身份则为1，否则为0） |
 
-Returns 1 (as a 32-byte big-endian integer) if the pairing check passes, 0 if it fails. Dynamic gas cost: **37,700 gas** base + **32,600 gas** per pair. If the input is not valid, all gas provided is consumed and there is no return data, indicating a precompile contract error.
-
-## Example
+如果配对检查通过，则返回 1（作为 32 字节大端整数）；如果失败，则返回 0。动态 Gas 成本：每对 **37,700 Gas**基础 + **32,600 Gas**。如果输入无效，则提供的所有gas都会被消耗，并且没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

@@ -2,25 +2,23 @@
 fork: Frontier
 ---
 
-## Notes
+## 注释
 
-The identity function is typically used to copy a chunk of memory.
-
+恒等函数通常用于复制一块内存。
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; length[` | data | Data to return |
+| `[0; length[` | data | 要返回的数据 |
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; length[` | data | Data from input |
+| `[0; length[` | data | 输入数据 |
 
- If not enough gas was given, then there is no return data, indicating a precompile contract error.
-
-## Example
+如果没有提供足够的gas，则没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

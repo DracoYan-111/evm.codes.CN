@@ -4,20 +4,20 @@ fork: Cancun
 
 ## Inputs
 
-| Byte range | Name           | Description                               |
+| 字节范围 | Name           | 描述                               |
 |------------|----------------|-------------------------------------------|
-| `[0:32]`   | versioned_hash | Reference to a blob in the execution layer. |
-| `[32:64]`  | x              | x-coordinate at which the blob is being evaluated. |
-| `[64:96]`  | y              | y-coordinate at which the blob is being evaluated. |
-| `[96:144]` | commitment     | Commitment to the blob being evaluated. |
-| `[144:192]`| proof          | Proof associated with the commitment. |
+| `[0:32]`   | versioned_hash | 对执行层中的 blob 的引用。|
+| `[32:64]`  | x              | 正在评估 blob 的 x 坐标。|
+| `[64:96]`  | y              | 正在评估 blob 的 y 坐标。 |
+| `[96:144]` | commitment     | 对正在评估的 blob 的承诺。|
+| `[144:192]`| proof          | 与承诺相关的证明。 |
 
 ## Output
 
-| Byte range | Name                  | Description |
+| 字节范围 | Name                  | 描述 |
 |------------|-----------------------|-------------|
-| `[0; 32]`  | FIELD_ELEMENTS_PER_BLOB | The number of field elements in the blob. |
-| `[32; 64]` | BLS_MODULUS            | The modulus used in the BLS signature scheme. |
+| `[0; 32]`  | FIELD_ELEMENTS_PER_BLOB | blob 中字段元素的数量。|
+| `[32; 64]` | BLS_MODULUS            | BLS 签名方案中使用的模数。 |
 
-The precompile will return the number of field elements in the blob, and the `BLS_MODULUS` with the constant value `52435875175126190479447740508185965837690552500527637822603658699938581184513`.
-The precompile will reject non-canonical field elements (i.e. provided field elements **MUST** be strictly less than `BLS_MODULUS`).
+预编译将返回 blob 中字段元素的数量，以及常量值为“52435875175126190479447740508185965837690552500527637822603658699938581184513”的“BLS_MODULUS”。
+预编译将拒绝非规范字段元素（即提供的字段元素**必须**严格小于“BLS_MODULUS”）。

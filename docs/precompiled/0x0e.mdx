@@ -2,40 +2,35 @@
 fork: Prague
 ---
 
-## Notes
+## 注释
 
-BLS12-381 G2 multi-scalar multiplication (MSM) precompile performs efficient computation of multiple scalar multiplications followed by addition on the G2 group. This operation computes: `k1 * P1 + k2 * P2 + ... + kn * Pn` where `ki` are scalars and `Pi` are G2 points.
-
-G2 points are defined over the quadratic extension field Fp2, making this operation more expensive than the corresponding G1 MSM. The operation includes subgroup checks for all input points. More information can be found in [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537).
-
+BLS12-381 G2 多标量乘法 (MSM) 预编译执行多标量乘法的高效计算，然后在 G2 组上执行加法。此操作计算：“k1 *P1 + k2 *P2 + ... + kn *Pn”，其中“ki”是标量，“Pi”是 G2 点。
+G2 点是在二次扩展域 Fp2 上定义的，使得该操作比相应的 G1 MSM 更昂贵。该操作包括对所有输入点的子组检查。更多信息可以在 [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) 中找到。
 ## Inputs
 
-The input consists of pairs of G2 points and scalars. Input length must be a multiple of 288 bytes (256 bytes for G2 point + 32 bytes for scalar).
+输入由成对的 G2 点和标量组成。输入长度必须是 288 字节的倍数（G2 点为 256 字节 + 标量为 32 字节）。
 
-For each 288-byte pair:
-
-| Byte range | Name | Description |
+对于每个 288 字节对：
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | x_c0 | X coordinate c0 component of G2 point |
-| `[64; 127]` (64 bytes) | x_c1 | X coordinate c1 component of G2 point |
-| `[128; 191]` (64 bytes) | y_c0 | Y coordinate c0 component of G2 point |
-| `[192; 255]` (64 bytes) | y_c1 | Y coordinate c1 component of G2 point |
-| `[256; 287]` (32 bytes) | scalar | Scalar multiplier (big-endian) |
+| `[0; 63]` (64 bytes) | x_c0 | G2点的X坐标c0分量 |
+| `[64; 127]` (64 bytes) | x_c1 | G2点的X坐标c1分量 |
+| `[128; 191]` (64 bytes) | y_c0 | G2点的Y坐标c0分量 |
+| `[192; 255]` (64 bytes) | y_c1 | G2点的Y坐标c1分量 |
+| `[256; 287]` (32 bytes) | scalar | 标量乘法器（大端） |
 
-G2 points are encoded as elements of Fp2. Input points must be valid G2 curve points and in the correct subgroup. Scalars must be less than the BLS12-381 subgroup order.
-
+G2 点被编码为 Fp2 的元素。输入点必须是有效的 G2 曲线点并且位于正确的子组中。标量必须小于 BLS12-381 子组阶。
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | x_c0 | X coordinate c0 component of result point on BLS12-381 G2 |
-| `[64; 127]` (64 bytes) | x_c1 | X coordinate c1 component of result point on BLS12-381 G2 |
-| `[128; 191]` (64 bytes) | y_c0 | Y coordinate c0 component of result point on BLS12-381 G2 |
-| `[192; 255]` (64 bytes) | y_c1 | Y coordinate c1 component of result point on BLS12-381 G2 |
+| `[0; 63]` (64 bytes) | x_c0 | BLS12-381 G2 结果点的 X 坐标 c0 分量|
+| `[64; 127]` (64 bytes) | x_c1 | BLS12-381 G2 结果点的 X 坐标 c1 分量 |
+| `[128; 191]` (64 bytes) | y_c0 | BLS12-381 G2 结果点的 Y 坐标 c0 分量 |
+| `[192; 255]` (64 bytes) | y_c1 | BLS12-381 G2 结果点的 Y 坐标 c1 分量 |
 
-Returns the result of the G2 multi-scalar multiplication. Dynamic gas cost with volume discounts starting at **55,000 gas**. If the input is not valid, all gas provided is consumed and there is no return data, indicating a precompile contract error.
-
-## Example
+返回 G2 多标量乘法的结果。动态 Gas 成本，批量折扣从 **55,000 Gas**起。如果输入无效，则提供的所有gas都会被消耗，并且没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

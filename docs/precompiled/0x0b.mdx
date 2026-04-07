@@ -2,32 +2,29 @@
 fork: Prague
 ---
 
-## Notes
+## 注释
 
-BLS12-381 G1 addition precompile performs point addition on the G1 group of the BLS12-381 elliptic curve. The BLS12-381 curve is defined over a 381-bit prime field and is used for cryptographic operations including digital signatures and zero-knowledge proofs.
+BLS12-381 G1 加法预编译对 BLS12-381 椭圆曲线的 G1 组执行点加法。 BLS12-381 曲线在 381 位素数字段上定义，用于包括数字签名和零知识证明在内的加密操作。
 
-More information about BLS12-381 can be found in [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537).
-
+有关 BLS12-381 的更多信息可以在 [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) 中找到。
 ## Inputs
 
-| Byte range | Name | Description |
+|字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | x1 | X coordinate of first point on BLS12-381 G1 |
-| `[64; 127]` (64 bytes) | y1 | Y coordinate of first point on BLS12-381 G1 |
-| `[128; 191]` (64 bytes) | x2 | X coordinate of second point on BLS12-381 G1 |
-| `[192; 255]` (64 bytes) | y2 | Y coordinate of second point on BLS12-381 G1 |
+| `[0; 63]` (64 bytes) | x1 | BLS12-381 G1 上第一个点的 X 坐标|
+| `[64; 127]` (64 bytes) | y1 | BLS12-381 G1 上第一个点的 Y 坐标|
+| `[128; 191]` (64 bytes) | x2 | BLS12-381 G1 上第二点的 X 坐标 |
+| `[192; 255]` (64 bytes) | y2 | BLS12-381 G1 上第二点的 Y 坐标 |
 
-Input must be exactly **256 bytes**. Points must be valid G1 curve points and in the correct subgroup.
-
+输入必须恰好是 **256 字节**。点必须是有效的 G1 曲线点并且位于正确的子组中。
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围| Name | 描述 |
 |-----------:|-----:|------------:|
 | `[0; 63]` (64 bytes) | x | X coordinate of result point on BLS12-381 G1 |
-| `[64; 127]` (64 bytes) | y | Y coordinate of result point on BLS12-381 G1 |
+| `[64; 127]` (64 bytes) | y BLBLS12-381 G1 上结果点的 Y 坐标
 
-Returns the sum of the two input G1 points.
-
+返回两个输入 G1 点的总和。
 ## Example
 
 | Input | Output |
@@ -36,3 +33,4 @@ Returns the sum of the two input G1 points.
 
 ## Gas
 The gas cost is fixed at 375. However, if the input does not allow to compute a valid result, all the gas sent is consumed.
+Gas 成本固定为 375。但是，如果输入不允许计算有效结果，则发送的所有 Gas 都会被消耗。

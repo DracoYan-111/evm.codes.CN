@@ -2,40 +2,37 @@
 fork: Osaka
 ---
 
-## Notes
+## 注释
 
-P256VERIFY performs ECDSA signature verification over the secp256r1 elliptic curve (also known as P-256 or prime256v1). This curve is a NIST-standardized curve widely supported in modern secure hardware including Apple Secure Enclave, Android Keystore, HSMs, TEEs, and FIDO2/WebAuthn authenticators.
+P256VERIFY 在 secp256r1 椭圆曲线（也称为 P-256 或 prime256v1）上执行 ECDSA 签名验证。该曲线是现代安全硬件中广泛支持的 NIST 标准化曲线，包括 Apple Secure Enclave、Android Keystore、HSM、TEE 和 FIDO2/WebAuthn 身份验证器。
+本机 secp256r1 支持可实现复杂的帐户抽象模式，例如设备本机签名、多因素身份验证和简化的密钥管理 -通过熟悉的身份验证流程减少主流采用的摩擦。
 
-Native secp256r1 support enables sophisticated account abstraction patterns like device-native signing, multi-factor authentication, and simplified key management - reducing friction for mainstream adoption through familiar authentication flows.
-
-This precompile is specified in [EIP-7951](https://eips.ethereum.org/EIPS/eip-7951) and supersedes RIP-7212 by implementing the same functionality with the same interface, but with critical security fixes:
-- **Point-at-infinity check**: Ensures the recovered point R' is not the point at infinity, preventing non-deterministic behavior.
-- **Modular comparison**: Uses `r' ≡ r (mod n)` instead of `r' == r` to handle cases where the x-coordinate exceeds the curve order.
-
+此预编译在 [EIP-7951](https://eips.ethereum.org/EIPS/eip-7951) 中指定，并通过使用相同的接口实现相同的功能来取代 RIP-7212，但具有关键的安全修复：
+- **无穷远点检查**：确保恢复的点 R' 不是无穷远点，防止不确定性行为。
+- **模块化比较**：使用 `r' == r (mod n)` 而不是 `r' == r` 来处理 x 坐标超出曲线阶数的情况。
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 31]` (32 bytes) | hash | Message hash to verify |
-| `[32; 63]` (32 bytes) | r | Signature component r, must satisfy `0 < r < n` |
-| `[64; 95]` (32 bytes) | s | Signature component s, must satisfy `0 < s < n` |
-| `[96; 127]` (32 bytes) | qx | Public key x-coordinate, must satisfy `0 ≤ qx < p` |
-| `[128; 159]` (32 bytes) | qy | Public key y-coordinate, must satisfy `0 ≤ qy < p` |
+| `[0; 31]` (32 bytes) | hash | 要验证的消息哈希 |
+| `[32; 63]` (32 bytes) | r |签名分量r，必须满足`0 < r < n` |
+| `[64; 95]` (32 bytes) | s | 签名分量 s，必须满足 `0 < s < n` |
+| `[96; 127]` (32 bytes) | qx | 公钥 x 坐标，必须满足 `0 ≤ qx < p` |
+| `[128; 159]` (32 bytes) | qy | 公钥 y 坐标，必须满足 `0 ≤ qy < p` |
 
-Input must be exactly **160 bytes**. All values are encoded as big-endian unsigned integers.
+输入必须恰好是 **160 字节**。所有值都编码为大端无符号整数。
+### 输入验证
 
-### Input Validation
+预编译执行以下验证检查：
+- 输入长度必须正好是 160 字节
+- 签名组件“r”和“s”必须在“(0, n)”范围内
+- 公钥坐标必须是有效的字段元素“[0, p)”
+- 点`(qx, qy)`必须满足曲线方程`qy² ≡ qx³ + ax + b (mod p)`
+- 点 `(qx, qy)` 不能是无穷远点
 
-The precompile performs the following validation checks:
-- Input length must be exactly 160 bytes
-- Signature components `r` and `s` must be in range `(0, n)`
-- Public key coordinates must be valid field elements `[0, p)`
-- The point `(qx, qy)` must satisfy the curve equation `qy² ≡ qx³ + ax + b (mod p)`
-- The point `(qx, qy)` must not be the point at infinity
+### 曲线参数
 
-### Curve Parameters
-
-| Parameter | Value |
+| 范围 | Value |
 |----------:|------:|
 | Field modulus (p) | `0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff` |
 | Subgroup order (n) | `0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551` |
@@ -44,30 +41,29 @@ The precompile performs the following validation checks:
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
 | `[0; 31]` (32 bytes) | success | `0x0000000000000000000000000000000000000000000000000000000000000001` for valid signatures |
 
-Returns empty output (``) for:
-- Invalid input length
-- Invalid field element encoding
-- Invalid signature component bounds
-- Invalid public key (not on curve or point at infinity)
-- Signature verification failure
+返回空输出 (``)：
+- 输入长度无效
+- 字段元素编码无效
+- 无效的签名组件边界
+- 无效的公钥（不在曲线或无穷远点上）
+- 签名验证失败
 
-## Example
+## 例子
 
 | Input | Output |
 |------:|-------:|
 | `0xbb5a52f42f9c9261ed4361f59422a1e30036e7c32b270c8807a419feca6050232ba3a8be6b94d5ec80a6d9d1190a436effe50d85a1eee859b8cc6af9bd5c2e184cd60b855d442f5b3c7b11eb6c4e0ae7525fe710fab9aa7c77a67f79e6fadd762927b10512bae3eddcfe467828128bad2903269919f7086069c8c4df6c732838c7787964eaac00e5921fb1498a60f4606766b3d9685001558d1a974e7341513e` | `0x0000000000000000000000000000000000000000000000000000000000000001` |
 
-The example above breaks down as:
-- **hash**: `0xbb5a52f42f9c9261ed4361f59422a1e30036e7c32b270c8807a419feca605023`
-- **r**: `0x2ba3a8be6b94d5ec80a6d9d1190a436effe50d85a1eee859b8cc6af9bd5c2e18`
-- **s**: `0x4cd60b855d442f5b3c7b11eb6c4e0ae7525fe710fab9aa7c77a67f79e6fadd76`
-- **qx**: `0x2927b10512bae3eddcfe467828128bad2903269919f7086069c8c4df6c732838`
-- **qy**: `0xc7787964eaac00e5921fb1498a60f4606766b3d9685001558d1a974e7341513e`
-
+上面的例子分解为：
+-**hash**：`0xbb5a52f42f9c9261ed4361f59422a1e30036e7c32b270c8807a419feca605023`
+-**r**：`0x2ba3a8be6b94d5ec80a6d9d1190a436effe50d85a1eee859b8cc6af9bd5c2e18`
+-**s**：`0x4cd60b855d442f5b3c7b11eb6c4e0ae7525fe710fab9aa7c77a67f79e6fadd76`
+-**qx**：`0x2927b10512bae3eddcfe467828128bad2903269919f7086069c8c4df6c732838`
+-**qy**：`0xc7787964eaac00e5921fb1498a60f4606766b3d9685001558d1a974e7341513e`
 ## Gas
 
-The gas cost is fixed at **6900** gas. This cost is based on benchmarking against the existing ECRECOVER precompile (3000 gas). If the input does not allow computation of a valid result, all the gas sent is consumed.
+Gas 成本固定为 **6900**Gas​​。该成本基于现有 ECRECOVER 预编译（3000 Gas）的基准测试。如果输入不允许计算有效结果，则发送的所有气体都会被消耗。

@@ -4,18 +4,17 @@ fork: Frontier
 
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; length[` | data | Data to hash with SHA2-256 |
+| `[0; length[` | data | 使用 SHA2-256 进行哈希处理的数据 |
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| [0; 31] (32 bytes) | hash | The result hash |
+| [0; 31] (32 bytes) | hash | 结果哈希 |
 
- If not enough gas was given, then there is no return data, indicating a precompile contract error.
-
+如果没有提供足够的gas，则没有返回数据，表明预编译合约错误。
 ## Example
 
 | Input | Output |

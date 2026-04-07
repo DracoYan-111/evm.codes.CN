@@ -2,26 +2,25 @@
 fork: Byzantium
 ---
 
-## Inputs
+## 输入
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 31]` (32 bytes) | Bsize | Byte size of B |
-| `[32; 63]` (32 bytes) | Esize | Byte size of E |
-| `[64; 95]` (32 bytes) | Msize | Byte size of M |
-| `[96; 96 + Bsize[` | B | Base as unsigned integer |
-| `[96 + Bsize; 96 + Bsize + Esize[` | E | Exponent as unsigned integer, if zero, then `B ** E` will be one |
-| `[96 + Bsize + Esize; 96 + Bsize + Esize + Msize[` | M | Modulo as unsigned integer, if zero, then returns zero |
+| `[0; 31]` (32 bytes) | Bsize | B的字节大小 |
+| `[32; 63]` (32 bytes) | Esize | E的字节大小 |
+| `[64; 95]` (32 bytes) | Msize | M的字节大小 |
+| `[96; 96 + Bsize[` | B | 基数为无符号整数 |
+| `[96 + Bsize; 96 + Bsize + Esize[` | E | 指数为无符号整数，如果为零，则“B **E”将为一 |
+| `[96 + Bsize + Esize; 96 + Bsize + Esize + Msize[` | M | 作为无符号整数取模，如果为零，则返回零 |
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
 | `[0; mSize[` | value | Result of the computation, with the same number of bytes as M |
 
- If not enough gas was given, then there is no return data, indicating a precompile contract error.
-
-## Example
+如果没有提供足够的gas，则没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

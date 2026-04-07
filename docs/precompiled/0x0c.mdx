@@ -2,36 +2,33 @@
 fork: Prague
 ---
 
-## Notes
+## 注释
 
-BLS12-381 G1 multi-scalar multiplication (MSM) precompile performs efficient computation of multiple scalar multiplications followed by addition on the G1 group. This operation computes the sum of scalar products: `k1 * P1 + k2 * P2 + ... + kn * Pn` where `ki` are scalars and `Pi` are G1 points.
+BLS12-381 G1 多标量乘法 (MSM) 预编译执行多标量乘法的高效计算，然后在 G1 组上执行加法。此操作计算标量积之和：“k1 *P1 + k2 *P2 + ... + kn *Pn”，其中“ki”是标量，“Pi”是 G1 点。
 
-The operation includes subgroup checks to ensure all input points are in the correct subgroup of G1. More information can be found in [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537).
-
+该操作包括子组检查，以确保所有输入点都位于 G1 的正确子组中。更多信息可以在 [EIP-2537](https://eips.ethereum.org/EIPS/eip-2537) 中找到。
 ## Inputs
 
-The input consists of pairs of G1 points and scalars. Input length must be a multiple of 160 bytes (128 bytes for G1 point + 32 bytes for scalar).
+输入由成对的 G1 点和标量组成。输入长度必须是 160 字节的倍数（G1 点 128 字节 + 标量 32 字节）。
 
-For each 160-byte pair:
+对于每个 160 字节对：
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | x | X coordinate of G1 point |
-| `[64; 127]` (64 bytes) | y | Y coordinate of G1 point |
-| `[128; 159]` (32 bytes) | scalar | Scalar multiplier (big-endian) |
+| `[0; 63]` (64 bytes) | x | G1点X坐标 |
+| `[64; 127]` (64 bytes) | y | G1点Y坐标 |
+| `[128; 159]` (32 bytes) | scalar | 标量乘法器（大端）|
 
-Input points must be valid G1 curve points and in the correct subgroup. Scalars must be less than the BLS12-381 subgroup order.
-
+输入点必须是有效的 G1 曲线点并且位于正确的子组中。标量必须小于 BLS12-381 子组阶。
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | x | X coordinate of result point on BLS12-381 G1 |
-| `[64; 127]` (64 bytes) | y | Y coordinate of result point on BLS12-381 G1 |
+| `[0; 63]` (64 bytes) | x | BLS12-381 G1 上结果点的 X 坐标 |
+| `[64; 127]` (64 bytes) | y | BLS12-381 G1 上结果点的 Y 坐标 |
 
-Returns the result of the multi-scalar multiplication. Dynamic gas cost with volume discounts starting at **12,275 gas**. If the input is not valid, all gas provided is consumed and there is no return data, indicating a precompile contract error.
-
-## Example
+返回多标量乘法的结果。动态 Gas 成本，批量折扣从 **12,275 Gas**起。如果输入无效，则提供的所有gas都会被消耗，并且没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

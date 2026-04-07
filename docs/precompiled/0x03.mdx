@@ -4,19 +4,18 @@ fork: Frontier
 
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围| Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; length[` | data | Data to hash with RIPEMD-160 |
+| `[0; length[` | data | 使用 RIPEMD-160 进行哈希处理的数据 |
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| [0; 31] (32 bytes) | hash | The result 20-byte hash right aligned to 32 bytes |
+| [0; 31] (32 bytes) | hash | 结果20字节散列右对齐到32字节 |
 
- If not enough gas was given, then there is no return data, indicating a precompile contract error.
-
-## Example
+如果没有提供足够的gas，则没有返回数据，表明预编译合约错误。
+## 例子
 
 | Input | Output |
 |------:|-------:|

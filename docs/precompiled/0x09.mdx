@@ -4,23 +4,22 @@ fork: Istanbul
 
 ## Inputs
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 3]` (4 bytes) | rounds | Number of rounds (big-endian unsigned integer) |
-| `[4; 67]` (64 bytes) | h | State vector (8 8-byte little-endian unsigned integer) |
-| `[68; 195]` (128 bytes) | m | Message block vector (16 8-byte little-endian unsigned integer) |
-| `[196; 211]` (16 bytes) | t | Offset counters (2 8-byte little-endian integer) |
-| `[212; 212]` (1 bytes) | f | Final block indicator flag (0 or 1) |
+| `[0; 3]` (4 bytes) | rounds | 轮数（大端无符号整数） |
+| `[4; 67]` (64 bytes) | h | 状态向量（8 个 8 字节小端无符号整数） |
+| `[68; 195]` (128 bytes) | m | 消息块向量（16个8字节小端无符号整数） |
+| `[196; 211]` (16 bytes) | t | 偏移计数器（2 个 8 字节小端整数） |
+| `[212; 212]` (1 bytes) | f | 最终块指示器标志（0或1） |
 
 ## Output
 
-| Byte range | Name | Description |
+| 字节范围 | Name | 描述 |
 |-----------:|-----:|------------:|
-| `[0; 63]` (64 bytes) | h | State vector (8 8-byte little-endian unsigned integer) |
+| `[0; 63]` (64 bytes) | h | 状态向量（8 个 8 字节小端无符号整数） |
 
-If the input is not valid, all gas provided is consumed and there is no return data, indicating a precompile contract error. Also, if not enough gas was given, there is no return data.
-
-## Example
+如果输入无效，则提供的所有gas都会被消耗，并且没有返回数据，表明预编译合约错误。此外，如果没有提供足够的气体，则没有返回数据。
+## 例子
 
 | Input | Output |
 |------:|-------:|
