@@ -3,10 +3,10 @@
     static_gas = {gasPrices|extcallGas}
     dynamic_gas = memory_expansion_cost + code_execution_cost + address_access_cost + positive_value_cost + value_to_empty_account_cost
 
-The memory expansion cost explanation can be found [here](/about).
+内存扩展成本说明可以在[此处](/about)找到。
 
-The different costs are:
- - `code_execution_cost` is the cost of the called code execution.
-  - If `address` is not warm, then `address_access_cost` is {gasPrices|coldaccountaccess} minus {gasPrices|warmstorageread}, otherwise it is {gasPrices|warmstorageread}. 参阅 [访问集合（access sets）](/about) 章节。
- - If `value` is not 0, then `positive_value_cost` is {gasPrices|callValueTransfer}. In this case there is also a call stipend that is given to make sure that a basic fallback function can be called. {gasPrices|callStipend} is thus removed from the cost, and also added to the `gas` input.
- - If `value` is not 0 and the `address` given points to an empty account, then `value_to_empty_account_cost` is {gasPrices|callNewAccount}. An account is empty if its balance is 0, its nonce is 0 and it has no code.
+不同的成本是：
+ - `code_execution_cost` 是被调用代码执行的成本。
+ - 如果“address”不是“warm”，则“address_access_cost”为 {gasPrices|coldaccountaccess} 减去 {gasPrices|warmstorageread}，否则为 {gasPrices|warmstorageread}。 请参阅 [访问集合（访问集）](/about) 章节。
+ - 如果“value”不为 0，则“positive_value_cost”为 {gasPrices|callValueTransfer}。在这种情况下，还会提供调用津贴，以确保可以调用基本的后备函数。因此，{gasPrices|callStipend} 会从成本中删除，并添加到“gas”输入中。
+ - 如果“value”不为 0 并且给定的“address”指向空帐户，则“value_to_empty_account_cost”为 {gasPrices|callNewAccount}。如果帐户余额为 0、随机数为 0 并且没有代码，则帐户为空。

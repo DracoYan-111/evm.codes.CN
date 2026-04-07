@@ -1,9 +1,9 @@
 ## Gas
 
-### Definitions:
-- **value**: value from the stack input.
-- **current_value**: current value of the storage slot.
-- **original_value**: value of the storage slot before the current transaction.
+### 定义：
+- **value**：来自堆栈输入的值。
+- **current_value**：存储槽的当前值。
+- **original_value**：当前交易之前存储槽的值。
 
 
     static_gas = {gasPrices|sstore}
@@ -18,7 +18,7 @@
     else
         base_dynamic_gas = {gasPrices|warmstorageread}
 
-On top of the cost above, {gasPrices|coldsload} is added to `base_dynamic_gas` if the slot is cold. 参阅 [访问集合（access sets）](/about) 章节。
+除了上述成本之外，如果插槽是冷的，则 {gasPrices|coldsload} 会添加到 base_dynamic_gas 中。请参阅访问集部分。
 
 ## Gas 退还
 

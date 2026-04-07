@@ -3,9 +3,9 @@
     static_gas = {gasPrices|call}
     dynamic_gas = memory_expansion_cost + code_execution_cost + positive_value_cost + empty_account_cost
 
-The memory expansion cost explanation can be found [here](/about).
+内存扩展成本说明可以在[此处](/about)找到。
 
-The different costs are:
- - `code_execution_cost` is the cost of the called code execution (limited by the `gas` parameter).
- - If `value` is not 0, then `positive_value_cost` is {gasPrices|callValueTransfer}. In this case there is also a call stipend that is given to make sure that a basic fallback function can be called. {gasPrices|callStipend} is thus removed from the cost, and also added to the `gas` input.
- - If no account exists at the given `address`, then `empty_account_cost` is {gasPrices|callNewAccount}.
+不同的成本是：
+ - `code_execution_cost` 是被调用代码执行的成本（受 `gas` 参数限制）。
+ - 如果“value”不为 0，则“positive_value_cost”为 {gasPrices|callValueTransfer}。在这种情况下，还会提供调用津贴，以确保可以调用基本的后备函数。因此，{gasPrices|callStipend} 会从成本中删除，并添加到“gas”输入中。
+ - 如果给定“地址”处不存在账户，则“empty_account_cost”为 {gasPrices|callNewAccount}。

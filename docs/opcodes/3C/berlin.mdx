@@ -5,5 +5,5 @@
     static_gas = {gasPrices|extcodecopy}
     dynamic_gas = {gasPrices|copy} * minimum_word_size + memory_expansion_cost + address_access_cost
 
-The memory expansion cost explanation can be found [here](/about).
-If the accessed address is warm, `address_access_cost` is {gasPrices|warmstorageread}, otherwise it is {gasPrices|coldaccountaccess}. 参阅 [访问集合（access sets）](/about) 章节。
+内存扩展成本说明可以在[此处](/about)找到。
+如果访问的地址是warm，则`address_access_cost`为{gasPrices|warmstorageread}，否则为{gasPrices|coldaccountaccess}。 请参阅 [访问集合（访问集）](/about) 章节。

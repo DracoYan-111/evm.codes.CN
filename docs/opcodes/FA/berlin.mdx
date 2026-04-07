@@ -3,8 +3,8 @@
     static_gas = {gasPrices|call}
     dynamic_gas = memory_expansion_cost + code_execution_cost + address_access_cost
 
-The memory expansion cost explanation can be found [here](/about).
+内存扩展成本说明可以在[此处](/about)找到。
 
-The different costs are:
- - `code_execution_cost` is the cost of the called code execution (limited by the `gas` parameter).
- - If `address` is warm, then `address_access_cost` is {gasPrices|warmstorageread}, otherwise it is {gasPrices|coldaccountaccess}. 参阅 [访问集合（access sets）](/about) 章节。
+不同的成本是：
+ - `code_execution_cost` 是被调用代码执行的成本（受 `gas` 参数限制）。
+ - 如果“address”是warm，则“address_access_cost”是{gasPrices|warmstorageread}，否则是{gasPrices|coldaccountaccess}。 请参阅 [访问集合（访问集）](/about) 章节。
