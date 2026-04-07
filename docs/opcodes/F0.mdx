@@ -1,0 +1,49 @@
+---
+fork: 边境
+group: 系统操作
+---
+
+_Index 1 is top of the stack. See [PUSH](/#60)._
+
+## 注意事项
+
+使用内存中指定“偏移量”处提供的初始化代码创建新合约。输入计算出的目标地址的新子[上下文](/about)并执行初始化代码，然后恢复当前上下文。
+
+如果部署成功，新帐户的[代码](/about) 将设置为执行初始化代码所产生的[返回数据](/about)。
+
+目标地址计算为发送者地址的 rlp 编码的 Keccak-256 散列的最右边 20 个字节（160 位），后跟其随机数。那是：
+    address = keccak256(rlp([sender_address,sender_nonce]))[12:]
+
+部署可能会因以下原因而失败：
+- 目标地址已存在合约（可以与 [CREATE2](/#F5) 和 [SELFDESTRUCT](/#FF) 结合使用）。
+- 发送的金额不足。
+- 子[上下文](/关于)[恢复](/#FD)。
+- 气体不足以执行初始化代码。
+- 达到调用深度限制。
+
+请注意，这些失败仅影响返回值，不会导致调用上下文恢复（与下面的错误情况不同）。
+
+EOFv1 代码中不允许，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `value`: [wei](https://www.investopedia.com/terms/w/wei.asp) 中的值发送到新帐户。
+1. `offset`: [内存](/about) 中的字节偏移量，以字节为单位，新帐户的初始化代码。
+2. `size`: 要复制的字节大小（初始化代码的大小）。
+
+## 堆栈输出
+
+0. `address`: 部署的合约地址，如果部署失败则为 0。
+
+## 示例
+
+[在操场上重现](/playground?callValue=9&unit=Wei&codeType=Mnemonic&code='z0q0f9q9f0y4%20FFmslk3%200x63FFFFFFFF6000526004601CF3gvMSTORE~13~19gp%20'~k%20z%2F%2F%20Createmnmccountjith%20yjeimnd%20v%5Cnqynolgg~pvCREATEm%20al%20codekvPUSH1j%20wg~0fpvvz%01fgjklmpqvyz~_).
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+
+- Gas 不足。
+- 堆栈上的值不足。
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium fork 起）或 [EXTSTATICCALL](/#FB)（自 EOF fork 起）。
+- `size` 大于链的最大 initcode 大小（自上海分叉以来）。

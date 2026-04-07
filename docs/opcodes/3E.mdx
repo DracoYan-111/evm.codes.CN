@@ -1,0 +1,54 @@
+---
+fork: 拜占庭
+group: 环境信息
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+可以使用 [CALL](/#F1)、[CALLCODE](/#F2)、[DELEGATECALL](/#F4) 或 [STATICCALL](/#FA) 创建子上下文。
+
+如果在 EOF 代码中执行，对于超出范围的字节，将复制 0。
+
+## 堆栈输入
+
+0. `destOffset`: 结果将被复制到 [memory](/about) 中的字节偏移量。
+1. `offset`: 要复制的 [return data](/about) 中的字节偏移量。
+2. `size`: 要复制的字节大小。
+
+## 示例
+
+| Return data |
+|------------:|
+| `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+| * | Input 1 | * | * | Input 2 |
+|--:|--------:|--:|--:|--------:|
+| `1` | `0` | * | `1` | `32` |
+| `2` | `0` | * | `2` | `31` |
+| `3` | `32` | * | `3` | `1` |
+
+| Memory before |
+|--------------:|
+| `0` |
+
+| Memory after input 1 |
+|---------------------:|
+| `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+| Memory after input 1 then 2 |
+|----------------------------:|
+| `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+[在 playground 中复现][1]
+
+[1]: /playground?unit=Wei&codeType=Mnemonic&code='jCKVthat%20cK(wich%20return-32%20*Z7F7ggggggggggFJ_Z*6Q527*F6Q526020.!_Zq06020526029.00~64_Breatef(withfVcod)above~77JJzCREATE%20jPutsfnew%20(address-onfstackBallfdeployed%20XJJJJzDUP584%200xg*zSTATICCALLBlearfstackzPOPzPOPBlearfmemoryJJ_J!_J~64_zG1!JJWG2~1~31!W'~81%20z%5CnqQQQj%2F%2F%20g***f%20th)_zMSTOREZ832%200xXcontractWzRETURNDATACOPYzVconstructor%20Q000Kreate-a%20J~0GzjExampl)BzzjC8zPUSH.6QF3qqqq-s%20*FF)e%20(X%20!~32%01!()*-.8BGJKQVWXZ_fgjqz~_
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。
+- `offset` + `size` 溢出。
+- 如果在旧版（非 EOF）代码中执行，`offset` + `size` 大于 [RETURNDATASIZE](#3D)。

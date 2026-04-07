@@ -1,0 +1,236 @@
+{
+  "0x01": {
+    "name": "ecRecover",
+    "input": "hash | v | r | s",
+    "output": "publicAddress",
+    "description": "椭圆曲线数字签名算法（ECDSA）公钥恢复功能"
+  },
+  "0x02": {
+    "name": "SHA2-256",
+    "input": "data",
+    "output": "hash",
+    "description": "哈希函数",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x03": {
+    "name": "RIPEMD-160",
+    "input": "data",
+    "output": "hash",
+    "description": "哈希函数",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x04": {
+    "name": "identity",
+    "input": "data",
+    "output": "data",
+    "description": "返回输入值",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x05": {
+    "name": "modexp",
+    "input": "Bsize | Esize | Msize | B | E | M",
+    "output": "value",
+    "description": "模下的任意精度求幂运算",
+    "dynamicFee": {
+      "byzantium": {
+        "inputs": {
+          "Bsize": {
+            "type": "number",
+            "label": "Input: Bsize"
+          },
+          "Msize": {
+            "type": "number",
+            "label": "Input: Msize"
+          },
+          "exponent": {
+            "type": "number",
+            "label": "Input: E"
+          }
+        }
+      }
+    }
+  },
+  "0x06": {
+    "name": "ecAdd",
+    "input": "x1 | y1 | x2 | y2",
+    "output": "x | y",
+    "description": "在椭圆曲线 'alt_bn128' 上进行点加法 (ADD) 运算",
+    "dynamicFee": {
+      "byzantium": {
+        "inputs": {
+          "invalid": {
+            "type": "boolean",
+            "label": "Is the input invalid?"
+          },
+          "remaining": {
+            "type": "number",
+            "label": "State: remaining gas in the current context"
+          }
+        }
+      }
+    }
+  },
+  "0x07": {
+    "name": "ecMul",
+    "input": "x1 | y1 | s",
+    "output": "x | y",
+    "description": "在椭圆曲线 'alt_bn128' 上进行标量乘法 (MUL) 运算",
+    "dynamicFee": {
+      "byzantium": {
+        "inputs": {
+          "invalid": {
+            "type": "boolean",
+            "label": "Is the input invalid?"
+          },
+          "remaining": {
+            "type": "number",
+            "label": "State: remaining gas in the current context"
+          }
+        }
+      }
+    }
+  },
+  "0x08": {
+    "name": "ecPairing",
+    "input": "x1 | y1 | x2 | y2 | ... | xk | yk",
+    "output": "success",
+    "description": "在椭圆曲线 'alt_bn128' 上的群进行双线性函数运算",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x09": {
+    "name": "blake2f",
+    "input": "rounds | h | m | t | f",
+    "output": "h",
+    "description": "在 BLAKE2 密码哈希算法中使用的压缩函数 F",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "rounds": {
+            "type": "number",
+            "label": "Input: rounds"
+          }
+        }
+      }
+    }
+  },
+  "0x0a": {
+    "name": "point evaluation",
+    "input": "bytes",
+    "output": "bytes",
+    "description": "在给定对应于多项式 p(x) 和 KZG 证明的前提下验证 p(z) = y。同时验证所提供的 commitment（承诺）与提供的 versioned_hash 匹配。"
+  },
+  "0x0b": {
+    "name": "BLS12_G1ADD",
+    "input": "x1 | y1 | x2 | y2",
+    "output": "x | y",
+    "description": "BLS12-381 G1 点加法"
+  },
+  "0x0c": {
+    "name": "BLS12_G1MSM",
+    "input": "k1 | x1 | y1 | k2 | x2 | y2 | ...",
+    "output": "x | y",
+    "description": "BLS12-381 G1 多标量乘法",
+    "dynamicFee": {
+      "prague": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x0d": {
+    "name": "BLS12_G2ADD",
+    "input": "x1_c0 | x1_c1 | y1_c0 | y1_c1 | x2_c0 | x2_c1 | y2_c0 | y2_c1",
+    "output": "x_c0 | x_c1 | y_c0 | y_c1",
+    "description": "BLS12-381 G2 点加法"
+  },
+  "0x0e": {
+    "name": "BLS12_G2MSM",
+    "input": "k1 | x1_c0 | x1_c1 | y1_c0 | y1_c1 | k2 | x2_c0 | x2_c1 | y2_c0 | y2_c1 | ...",
+    "output": "x_c0 | x_c1 | y_c0 | y_c1",
+    "description": "BLS12-381 G2 多标量乘法",
+    "dynamicFee": {
+      "prague": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x0f": {
+    "name": "BLS12_PAIRING_CHECK",
+    "input": "g1_x | g1_y | g2_x_c0 | g2_x_c1 | g2_y_c0 | g2_y_c1 | ...",
+    "output": "result",
+    "description": "BLS12-381 配对检查",
+    "dynamicFee": {
+      "prague": {
+        "inputs": {
+          "size": {
+            "type": "number",
+            "label": "Byte size of data"
+          }
+        }
+      }
+    }
+  },
+  "0x10": {
+    "name": "BLS12_MAP_FP_TO_G1",
+    "input": "field_element",
+    "output": "x | y",
+    "description": "BLS12-381 将域元素映射到 G1 点"
+  },
+  "0x11": {
+    "name": "BLS12_MAP_FP2_TO_G2",
+    "input": "field_element_c0 | field_element_c1",
+    "output": "x_c0 | x_c1 | y_c0 | y_c1",
+    "description": "BLS12-381 将扩域元素映射到 G2 点"
+  },
+  "0x100": {
+    "name": "P256VERIFY",
+    "input": "hash | r | s | qx | qy",
+    "output": "success",
+    "description": "在 secp256r1 (P-256) 椭圆曲线上进行 ECDSA 签名验证"
+  }
+}

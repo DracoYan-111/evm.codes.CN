@@ -1,0 +1,33 @@
+---
+fork: 坎昆
+group: 堆栈存储器存储和流操作
+---
+
+*索引 1 位于栈顶。*
+
+## 堆栈输入
+
+0. `key`: 32 字节密钥位于[临时存储](/about)。
+
+## 堆栈输出
+
+0. `value`: 32 字节值对应于该键。如果该键以前从未被写入，则为 0。
+
+## 示例
+
+|临时存储密钥 | 临时存储值 |
+|-----------:|--------------:|
+| `0` | `46` |
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `0` | `46` | * | `1` | `1` | `0` |
+
+[在 playground 中复现](/playground?fork=cancun&unit=Wei&codeType=Mnemonic&code='zSetup~46~0yTSTOREyyzRun%20v~0w1s~1w2s'~yPUSH1r%2F%2F%20y%5Cnwrv%20vexamplesyTLOADyr%20z%01rsvwyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium 分支以来）或 [EXTSTATICCALL](/#FB)（自 EOF 分支以来）。

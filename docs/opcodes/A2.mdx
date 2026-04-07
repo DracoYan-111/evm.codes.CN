@@ -1,0 +1,24 @@
+---
+fork: 边境
+group: 日志操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+该指令对 EVM 状态没有影响。请参阅[此处](https://ethereum.org/en/developers/docs/smart-contracts/anatomy/#events-and-logs)。
+
+## 堆栈输入
+
+0. `offset`: [内存](/about)中的字节偏移量（以字节为单位）。
+1. `size`: 要复制的字节大小。
+2. `topic1`: 32 字节值。
+3. `topic2`: 32 字节值。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium fork 起）或 [EXTSTATICCALL](/#FB)（自 EOF fork 起）。

@@ -1,0 +1,29 @@
+---
+fork: 边境
+group: Stack Memory Storage and Flow Operations
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+程序计数器 (PC) 是已部署代码中的一个字节偏移量。它指示接下来要执行的指令。例如，当执行 [ADD](/#01) 指令时，由于该指令占用 1 个字节，PC 会加 1。[PUSH](/#60) 指令占用超过 1 个字节，因此会相应地增加计数器。
+
+**JUMP** 指令会改变程序计数器，从而打破线性执行路径，跳转到已部署代码中的另一个点。它用于实现诸如函数之类的功能。
+
+EOFv1 代码中不允许使用此指令，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `counter`: 已部署[代码](/about)中执行将继续执行的字节偏移量。必须是 [JUMPDEST](/#5B) 指令。
+
+## 示例
+
+[See in playground](/playground?unit=Wei&codeType=Mnemonic&code='wWZjump%20overqinvalid%20and%20jusXgoYoqpushk4x0_%20%20%20x2%20%7Bprevious%20instruction%20occupies%202%20bytes%7DzINVALIDx3_DEST~4k1x5'~%20wOffseXz%5Cnx%20~w%2F%2F%20qYhZkzPUSH1%20_zJUMPZe%20Y%20tXt%20%01XYZ_kqwxz~_).
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。
+- `Counter` offset is not a [JUMPDEST](/#5B). The error is generated even if the JUMP would not have been done.

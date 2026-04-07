@@ -1,0 +1,24 @@
+---
+fork: 边境
+group: 环境信息
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 堆栈输出
+
+0. `address`: 交易发送方的 20 字节地址。它只能是无验证码的账户。
+
+## 示例
+
+| * | Input | Output |
+|--:|------:|-------:|
+| `1` | | `0xbe862ad9abfe6f22bcb087716c7d89a26051f74c` |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='ORIGIN'_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- Stack overflow.

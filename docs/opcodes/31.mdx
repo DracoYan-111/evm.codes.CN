@@ -1,0 +1,28 @@
+---
+fork: 边境
+group: 环境信息
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 堆栈输入
+
+0. `address`: 要检查的帐户的 20 字节地址。
+
+## 堆栈输出
+
+0. `balance`: 给定账户的余额，单位为[wei](https://www.investopedia.com/terms/w/wei.asp)。如果账户不存在，则返回0。
+
+## 示例
+
+| * | Input | Output |
+|--:|------:|-------:|
+| `1` | `0x9bbfed6889322e016e0a02ee459d306fc19545d8` | `125985` |
+
+[在 playground 中复现](/playground?callValue=125985&unit=Wei&codeType=Mnemonic&code='%2F%2F%20Read%20current%20contract%20balance%5CnADDRESS%5CnBALANCE'_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

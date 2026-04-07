@@ -1,0 +1,39 @@
+---
+fork: 君士坦丁堡
+group: 比较和按位逻辑运算
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+将位向最低有效位移动。第一个位之前的位将被丢弃，新移动的位被设置为 0 如果前一个最高有效位是 0，否则新移动的位被设置为 1。
+
+## 堆栈输入
+
+0. `shift`: 要向右移动的位数。
+1. `value`: 要移动的整数。
+
+## 堆栈输出
+
+0. `value >> shift`: 偏移后的值。
+
+## 示例
+
+| * | Input | Output |
+|--:|------:|-------:|
+| `1` | `1` | `1` |
+| `2` | `2` | |
+
+| * | Input | Output |
+|--:|------:|-------:|
+| `1` | `4` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+| `2` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0` | |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='y1z2z1twwy2v32%200xuuu0z4t'~FFFFFFFzv1%20y%2F%2F%20Example%20w%5CnvwPUSHu~~~twSAR%01tuvwyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

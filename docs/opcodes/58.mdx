@@ -1,0 +1,26 @@
+---
+fork: 边境
+group: Stack Memory Storage and Flow Operations
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+程序计数器 (PC) 是已部署代码中的一个字节偏移量。它指示接下来要执行的指令。例如，当执行 [ADD](/#01) 指令时，由于该指令占用 1 个字节，PC 会加 1。[PUSH](/#60) 指令占用超过 1 个字节，因此会相应地增加计数器。
+
+EOFv1 代码中不允许使用此指令，包含此指令的代码将无法通过验证。
+
+## 堆栈输出
+
+0. `counter`: 此指令在当前程序中的程序计数器。
+
+## 示例
+
+[See in playground](/playground?unit=Wei&codeType=Mnemonic&code='~0x~1xJUMPDESTzesq2x~3xPUSH1%201%20l4x~6%20%7Bpreviouminstructionmtakem2%20bytes%7D'~PCwwwlz%20%2F%2F%20Offx%5Cnw%20%20qt%20ms%20lzseq%01lmqwxz~_).
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- Stack overflow.

@@ -1,0 +1,32 @@
+---
+fork: 边境
+group: Stack Memory Storage and Flow Operations
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 堆栈输入
+
+0. `key`: [存储](/about)中的32字节密钥。
+
+## 堆栈输出
+
+0. `value`: 与该键对应的 32 字节值。如果该键从未被写入过，则值为 0。
+
+## 示例
+
+|Storage key | Storage value |
+|-----------:|--------------:|
+| `0` | `46` |
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `0` | `46` | * | `1` | `1` | `0` |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='wSet%20up%20thrstatez46z0~SSTOREy1z0vy2z1v~'~%5Cnz~PUSH1%20y~~wExamplrw%2F%2F%20v~SLOADre%20%01rvwyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

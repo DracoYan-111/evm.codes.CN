@@ -1,0 +1,51 @@
+---
+fork: 君士坦丁堡
+group: 系统操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+相当于 [CREATE](/#F0)，不同之处在于 salt 允许将新合约部署在一致的、确定性的地址上。
+
+如果部署成功，帐户的[代码](/about) 将设置为执行初始化代码所产生的[返回数据](/about)。
+
+目的地址计算如下：
+
+    initialisation_code = memory[offset:offset+size]
+    address = keccak256(0xff + sender_address + salt + keccak256(initialisation_code))[12:]
+
+部署可能会因以下原因而失败：
+- 目的地地址已存在合约。
+- 价值不足以转移。
+- 子[上下文](/关于)[恢复](/#FD)。
+- 气体不足以执行初始化代码。
+- 达到调用深度限制。
+
+请注意，这些失败仅影响返回值，不会导致调用上下文恢复（与下面的错误情况不同）。
+
+EOFv1 代码中不允许，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `value`：发送到新帐户的 [wei](https://www.investopedia.com/terms/w/wei.asp) 中的值。
+1. `offset`: 在[内存](/about)中的字节偏移量，以字节为单位，新账户的初始化代码。
+2. `size`：要复制的字节大小（初始化代码的大小）。
+3. `salt`：32 字节值，用于在确定性地址创建新帐户。
+
+## 堆栈输出
+
+0. `address`: 已部署合约的地址，如果部署失败则为0。
+
+## 示例
+
+[在操场上复现](/playground?callValue=9&unit=Wei&codeType=Mnemonic&code='z0LjjVfannoYrecWQ_parameters%2C%20becausliYgenerates_addressjjVz9L~1j~9Vz0v4%20FFZskX3%200x63FFFFFFFF60005260046000F3NyMSTORE~2~13~19Nq'~X%20zfWanZccounYQ%20y%5Cnv%20weiZnd%20qyCREATE2le%20k%20codejNNf%2F%2F%20C_%20thlsamlZ%20aYt%20XyPUSH1WreatlVqyyQwithN~0Lvnok%01LNQVWXYZ_fjklqvyz~_).
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium fork 起）或 [EXTSTATICCALL](/#FB)（自 EOF fork 起）。
+- `size` 大于链的最大 initcode 大小（自上海分叉以来）。

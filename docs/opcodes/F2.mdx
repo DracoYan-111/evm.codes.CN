@@ -1,0 +1,42 @@
+---
+fork: 边境
+group: 系统操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+创建一个新的子 [context](/about)，就像调用自身一样，但使用给定帐户的 [code](/about)。特别是[存储](/about)保持不变。请注意，没有代码的帐户将返回成功为 true。
+
+如果 [return data](/about) 的大小未知，也可以在调用后使用指令 [RETURNDATASIZE](/#3D) 和 [RETURNDATACOPY](/#3E) 检索（自 Byzantium 分叉以来）。
+
+从 Tangerine Whistle 分叉开始，“gas”除了当前上下文剩余 Gas 的 64 分之一（“remaining_gas /64”）外，完全受到限制。如果调用尝试发送更多内容，则“gas”将更改以匹配允许的最大值。
+
+如果调用者没有足够的余额来发送 [value](/#34)，则调用失败，但当前的 [context](/about) 不会恢复。
+
+EOFv1 代码中不允许，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `gas`：发送到子[context](/about)执行的gas量。子上下文没有使用的gas会返回给这个。
+1. `address`: 执行[code](/about)的账户。
+2. `value`: [wei](https://www.investopedia.com/terms/w/wei.asp) 中的[value](/#34)发送到账户。
+3. `argsOffset`：子[上下文](/about)的[calldata](/about)中[内存](/about)中的字节偏移量(以字节为单位)。
+4. `argsSize`：要复制的字节大小（[calldata](/about) 的大小）。
+5. `retOffset`: [内存](/about)中的字节偏移量(以字节为单位)，用于存储子[上下文](/about)的[返回数据](/about)。
+6. `retSize`：要复制的字节大小（[返回数据](/about) 的大小）。
+
+## 堆栈输出
+
+0. `success`: 如果子[context](/about) [reverted](/#FD) 则返回 0，否则返回 1。
+
+## 示例
+
+[在操场上复现](/playground?unit=Wei&codeType=Mnemonic&code='kCreatXa%20VvthavcreateNaWexceptioWif%20Zofjisb_17bx67Y054Y757FE5BY052Y86018F3JMSTORE~17~15JCREATzm0dddQ6qyykSevZiWthXcurrenvVt~1JSSTORz'%3Am1dd~32Q7q'~_1%20zEyykCall%20withjK0%20y%5Cnvt%20q_2bxFFFFyCALLCODEm%3Db%2C%20returnNk%2F%2F%20j%20storagXd~0b%200_yPUSHZfirsvKY600Xe%20Wn%20VcontracQdJDUPNs%20KslovJdy%01JKNQVWXYZ_bdjkmqvyz~_).
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

@@ -1,0 +1,38 @@
+---
+fork: 边境
+group: Stack Memory Storage and Flow Operations
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 堆栈输入
+
+0. `offset`：[内存](/about)中的偏移量（以字节为单位）。
+
+1. `value`：要写入[内存](/about)的 1 字节值（32 字节栈值的最低有效字节）。
+## 示例
+
+| * | Input 1 | * | * | Input 2 |
+|--:|--------:|--:|--:|--------:|
+| `1` | `0` | * | `1` | `1` |
+| `2` | `0xFFFF` | * | `2` | `0xFF` |
+
+| Memory before |
+|--------------:|
+| `0` |
+
+| 输入 1 后的内存|
+|---------------------:|
+| `0xFF` |
+
+|输入 1 和 2 后的内存 |
+|----------------------------:|
+| `0xFFFF` |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='z1v2%200xFFFFy0w~z2y0xFFy1w'~%5Cnz%2F%2F%20Example%20yv1%20w~MSTORE8~v~PUSH%01vwyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

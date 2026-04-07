@@ -1,0 +1,30 @@
+---
+fork: 边境
+group: 停止和算术运算
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 堆栈输入
+
+0. `a`: first 整数值。
+1. `b`: integer value to subtract from the first.
+
+## 堆栈输出
+
+0. `a - b`: 减法运算取模结果 2<sup>256</sup>.
+
+## 示例
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `10` | `0` | * | `1` | `0` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+| `2` | `10` | | * | `2` | `1` | |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='z1~10~1wyyz2~1~w'~yPUSH1%20z%2F%2F%20Example%20y%5Cnw0ySUB%01wyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

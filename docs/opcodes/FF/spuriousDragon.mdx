@@ -1,0 +1,7 @@
+## Gas
+
+静态 gas 是 {gasPrices|selfdestruct}。如果向一个空账户发送了一个正数余额，则动态 gas 是 {gasPrices|callNewAccount}。否则没有额外成本。如果一个账户的余额为 0、随机数（nonce）为 0 且没有代码，则它是空账户。
+
+## Gas 退还
+
+在 gas 退还中增加 {gasPrices|selfdestructRefund}。参阅 [gas 退还](/about)。

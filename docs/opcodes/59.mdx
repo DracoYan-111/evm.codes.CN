@@ -1,0 +1,24 @@
+---
+fork: 边境
+group: Stack Memory Storage and Flow Operations
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+[内存](/about)始终完全可访问。此指令跟踪的是当前执行期间访问过的最高偏移量。首次写入或读取更大的偏移量会触发[内存扩展](/about)，这将消耗 gas。内存大小始终为字（32 字节）的倍数。
+
+## 堆栈输出
+
+0. `size`: 当前内存大小（以字节为单位）（到目前为止访问的较高偏移量 + 1）。
+
+## 示例
+
+[See in playground](playground?unit=Wei&codeType=Mnemonic&code='jInitiallygkufirst~1mkx39upart%20of%20third~3ms'~mqPOPqjNow%20size%20is%20v%20%2F%2F%20uqMLOADvRead%20q%5Cnm%20wordkqPUSH1gjMSIZEvg%200%01gjkmquv~_)
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- Stack overflow.

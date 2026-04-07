@@ -1,0 +1,36 @@
+---
+fork: 边境
+group: Stack Memory Storage and Flow Operations
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+从栈中弹出一个字作为 `offset`，定位并读取内存中位于 `offset` 位置的字，然后将其压入栈顶。如有必要，使用 uint256(0) 将内存扩展到 `offset` 位置。
+
+## 堆栈输入
+
+0. `offset`：[内存](/about)中的偏移量（以字节为单位）。
+
+## 堆栈输出
+
+0. `value`：从该偏移量开始的 [memory](/about) 中的 32 字节。如果超出其当前大小（参见 [MSIZE](/#59)），则写入 0。
+
+## 示例
+
+| Memory |
+|-------:|
+| `0x00000000000000000000000000000000000000000000000000000000000000FF` |
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `0` | `0xFF` | * | `1` | `1` | `0xFF00` |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='qPut%20thkstatkin%20memoryg32%200xfffffdFFv0zMSTOREw1v0jw2v1jz'~dddz%5CnwzzqExamplkvg1%20q%2F%2F%20ke%20jzMLOADgzPUSHf~~d00%01dfgjkqvwz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

@@ -1,0 +1,41 @@
+---
+fork: EOF
+group: 系统操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+创建一个新的子 [context](/about) 并执行给定帐户的 [code](/about)，然后恢复当前帐户。请注意，没有代码的帐户将返回成功状态。
+
+[return data](/about) 的大小可以在调用后使用指令 [RETURNDATASIZE](/#3D) 和 [RETURNDATACOPY](/#3E)（自 Byzantium fork）检索，或者使用 [RETURNDATALOAD](/#F7) 指令将 32 字节字加载到堆栈上。
+
+如果调用者没有足够的余额来发送 [value](/#34)，则调用失败，返回 1 作为“status”，但当前的 [context](/about) 不会恢复。
+
+当前上下文剩余gas中除了1个64（`remaining_gas /64`）之外的全部都发送到子[context](/about)执行，但不少于2300。子上下文未使用的gas返回给本上下文。如果未发送的 Gas 低于 5000，则调用失败，返回 1 作为“status”，但当前的 [context](/about) 不会恢复。
+
+如果调用堆栈深度为 1024，则调用失败，返回 1 作为“status”，但当前的 [context](/about) 不会恢复。
+
+## 堆栈输入
+
+0. `target_address`: [context](/about) 执行的账户。
+1. `input_offset`：子[上下文](/about)的[calldata](/about)中[内存](/about)中的字节偏移量(以字节为单位)。
+2. `input_size`：要复制的字节大小（[calldata](/about) 的大小）。
+3. `value`: [wei](https://www.investopedia.com/terms/w/wei.asp) 中的[value](/#34)发送到账户。
+
+## 堆栈输出
+
+0. `status`: 返回 0 表示成功，1 表示子 [context](/about) [reverted](/#FD) 恢复，2 表示失败。
+
+## 示例
+
+*TBD: 在操场上复现*
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 目标地址超过 20 个字节。 
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium fork 起）或 [EXTSTATICCALL](/#FB)（自 EOF fork 起），并且 [value](/#34) 不为 0。
+- 在遗留（非 EOF）上下文中执行。

@@ -1,0 +1,34 @@
+---
+fork: 边境
+group: 比较和按位逻辑运算
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+所有值均视为二进制补码有符号 256 位整数。
+
+## 堆栈输入
+
+0. `a`：左侧有符号整数。
+1. `b`：右侧有符号整数。
+
+## 堆栈输出
+
+0. `a < b`：如果左侧较小则为 1，否则为 0。
+
+## 示例
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` | `1` | * | `1` | `10` | `0` |
+| `2` | `0` | | * | `2` | `10` | |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='y1z9v32%200xsssstwwy2z10z10t'~uuuuzv1%20y%2F%2F%20Example%20w%5CnvwPUSHuFFtwSLTs~~%01stuvwyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

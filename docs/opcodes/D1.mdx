@@ -1,0 +1,32 @@
+---
+fork: EOF
+group: Data Section Access
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 立即论证 
+
+0. `offset`: 数据部分中的 16 位无符号值偏移。
+
+## 堆栈输出
+
+0. `data`: 数据部分的 32 字节值。数据部分末尾之后的所有字节均设置为 0。
+
+## 示例
+
+| Data Section |
+|---------|
+| `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `0` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` | * | `1` | `31` | `0xFF00000000000000000000000000000000000000000000000000000000000000` |
+
+*TBD: 在操场上重现*
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 在遗留（非 EOF）上下文中执行。

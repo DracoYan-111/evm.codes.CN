@@ -1,0 +1,51 @@
+---
+fork: EOF
+group: 系统操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+accessed_addresses 和地址冲突的行为与 [CREATE2](/#F5) 相同。
+
+目的地址计算如下：
+
+    initialisation_code = eof_container[initcontainer_index]
+    address = keccak256(0xff + sender_address + salt + keccak256(initialisation_code))[12:]
+
+部署可能由于以下原因失败：
+- 目的地址已存在合约。
+- 价值不足以转移。
+- 子[上下文](/about) [reverted](/#FD)。
+- 执行初始化代码的 gas 不足。
+- 调用深度限制已达到。
+
+请注意，这些失败仅影响返回值，不会导致调用上下文 revert（与下面的错误情况不同）。
+
+## 立即参数 
+
+0. `initcontainer_index`: 8位无符号值作为EOF子容器在容器中的索引。
+
+## 堆栈输入
+
+0. `value`: [wei](https://www.investopedia.com/terms/w/wei.asp) 中的值发送到新帐户。
+1. `salt`: 用于在确定性地址创建新帐户的 32 字节值。
+2. `input_offset`: [内存](/about)中的字节偏移量（以字节为单位），新帐户的初始化代码。
+3. `input_size`: 要复制的字节大小（初始化代码的大小）。
+
+## 堆栈输出
+
+0. `address`: 部署的EOF合约的地址，如果部署失败则为0。
+
+## 示例
+
+*TBD: 在操场上重现*
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium 分叉起）或 [EXTSTATICCALL](/#FB)（自 EOF 分叉起）。
+- 部署容器代码大小超过最大代码大小，该大小在 [RETURNCONTRACT](/#EE) 中更新。
+- 在遗留（非 EOF）上下文中执行。

@@ -1,0 +1,27 @@
+---
+fork: 边境
+group: 系统操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+从 Cancun 分叉开始的行为：将账户中的所有以太币发送到目标地址。
+如果在创建合约的同一个交易中执行，或者在 Cancun 分叉之前，当前账户会被标记为销毁，并将在当前交易结束时被销毁。转移当前余额到给定账户的操作不会失败。特别需要注意的是，目标账户的代码（如果有的话）不会被执行，或者，即使该账户不存在，其余额仍然会被添加到指定的地址中。
+
+在 EOFv1 代码中不允许使用，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `address`: 接收当前余额的账户（自 Istanbul 分叉起见 [BALANCE](/#31) 或 [SELFBALANCE](/#47)）。
+
+## 示例
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='ureatekcvhagwrites%20inkslotq14bx64p1p055p052p5601BF3jzMSTORE~14~18jzCREATEzzuvries%20to%20modify%20state%2C%20failsjjjjzDUP5q2bxFFFFzSTATICCALL'~q1%20z%5Cnvontracgtu%2F%2F%20CqzPUSHp600k%20a%20j~0gt%20b%200%01bgjkpquvz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。
+- 当前执行上下文来自 [STATICCALL](/#FA)（自 Byzantium 分叉起）或 [EXTSTATICCALL](/#FB)（自 EOF 分叉起）。

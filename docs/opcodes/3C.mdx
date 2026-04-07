@@ -1,0 +1,54 @@
+---
+fork: 边境
+group: 环境信息
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+对于超出边界的字节，将复制 0。
+
+EOFv1 代码中不允许使用此指令，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `address`: 要查询的合约的 20 字节地址。如果 `address` 指向 EOF 合约，则结果如同其代码为 `EF00`。
+1. `destOffset`: 结果将被复制到 [memory](/about) 中的字节偏移量。
+2. `offset`: 要复制的 [code](/about) 中的字节偏移量。
+3. `size`: 要复制的字节大小。
+
+## 示例
+
+| Code |
+|-----:|
+|`0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+| * | Input 1 | * | * | Input 2 |
+|--:|--------:|--:|--:|--------:|
+| `1` | `0x43a61f3f4c73ea0d444c5c1c1a8544067a86219b` | * | `1` | `0x43a61f3f4c73ea0d444c5c1c1a8544067a86219b` |
+| `2` | `0` | * | `2` | `0` |
+| `3` | `0` | * | `3` | `31` |
+| `4` | `32` | * | `4` | `8` |
+
+| Memory before |
+|--------------:|
+| `0` |
+
+| Memory after input 1 |
+|---------------------:|
+| `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+| Memory after input 1 then 2 |
+|----------------------------:|
+| `0xFF00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` |
+
+[在 playground 中复现][1]
+
+[1]: /playground?unit=Wei&codeType=Mnemonic&code='jCNQthat%20cNZwith%20.9%20aGcodeK7qqqqqqqqqIWK96_5260206_F3JJJJJ0!W(C-gZwithgQcodBabove~41IIzCREATE%20jPutsgnew%20ZaddresGongstack(Cleargmemory%20forge*esIIWI!WL1!IVL2~8~31V'~)1%20z%5Cnq999Fj%2F%2F%20g%20thB_000Zcontract%20WzMSTOREVIzDUP4zEXTCODECOPYQconstructor%20N-Ga%20L(E*BK).0xJ___I~0Gs%20Be%209FF.32%20-reate*xampl)zPUSH(zzj!~32%01!()*-.9BGIJKLNQVWZ_gjqz~_
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

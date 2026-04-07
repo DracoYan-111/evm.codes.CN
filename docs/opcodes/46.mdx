@@ -1,0 +1,35 @@
+---
+fork: 伊斯坦布尔
+group: 区块信息
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+以下是一些链 ID：
+
+| Id | Chain |
+|---:|------:|
+| 1 | Mainnet |
+| 5 | Goerli |
+| 11155111 | Sepolia |
+| 17000 | Holešky |
+
+## 堆栈输出
+
+0. `chainId`: 网络链 ID。
+
+## 示例
+
+| * | Input | Output |
+|--:|------:|-------:|
+| `1` | | `1` |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='CHAINID'_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- Stack overflow.

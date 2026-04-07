@@ -1,0 +1,24 @@
+---
+fork: 坎昆
+group: 区块信息
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 堆栈输出
+
+0. `blobBaseFee`: [blob base fee](https://eips.ethereum.org/EIPS/eip-4844#gas-accounting) in [wei](https://www.investopedia.com/terms/w/wei.asp).
+
+## 示例
+
+| * | Input | Output |
+|--:|------:|-------:|
+| `1` | | `10` |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='BLOBBASEFEE'_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈溢出。

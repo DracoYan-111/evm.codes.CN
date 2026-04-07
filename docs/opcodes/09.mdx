@@ -1,0 +1,36 @@
+---
+fork: 边境
+group: 停止和算术运算
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+该运算的所有中间计算均不受 2<sup>256</sup> 模运算的限制。
+
+## 堆栈输入
+
+0. `a`: 第一个要乘 的整数。
+1. `b`: 第二个要乘 的整数。
+2. `N`: 要除的整数。
+
+## 堆栈输出
+
+0. （a * b）% N：乘法运算后取模的整数结果。如果分母为 0，则结​​果为 0。
+
+## 示例
+
+| * | Input | Output | * | * | Input | Output |
+|--:|------:|-------:|--:|--:|------:|-------:|
+| `1` | `10` | `4` | * | `1` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` | `9` |
+| `2` | `10` | | * | `2` | `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF` | |
+| `3` | `8` | | * | `3` | `12` | |
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='y1v8v10v10twwy2v12usust'~rrrrzwPUSHy%2F%2F%20Example%20w%5Cnvz1%20uz32%200xstwMULMODs~~~~rFF%01rstuvwyz~_)。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

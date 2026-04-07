@@ -1,0 +1,24 @@
+---
+fork: 边境
+group: 堆栈存储器存储和流操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+EOFv1 代码中不允许使用此指令，包含此指令的代码将无法通过验证。
+
+## 堆栈输出
+
+0. `gas`: （按照此说明操作后）剩余气体。
+
+## 示例
+
+[在 playground 中复现](/playground?unit=Wei&codeType=Mnemonic&code='GASyPUSH3%2021000zCosqof~transactionyGASLIMITzGaskhaqwjgivenko~context__zResulqis~amounqof%20gjused%20upko%20andbncluding~GASbnstruction'~khe%20z%20%2F%2F%20y%5Cnqt%20k%20tjas%20b%20i_ySUB%01_bjkqyz~_).
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈溢出。

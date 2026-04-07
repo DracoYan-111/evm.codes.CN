@@ -1,0 +1,37 @@
+---
+fork: 拜占庭
+group: 系统操作
+---
+
+*索引 1 位于栈顶。参见 [PUSH](/#60)。*
+
+## 注意事项
+
+创建一个新的子 [context](/about) 并执行给定帐户的 [code](/about)，然后恢复当前帐户。请注意，没有代码的帐户将成功返回 true (1)。
+
+该指令等同于 [CALL](/#F1)，只不过它不允许在子 [context](/about) 中执行任何状态修改指令或发送 ETH。不允许的指令有 [CREATE](/#F0)、[CREATE2](/#F5)、[LOG0](/#A0)、[LOG1](/#A1)、[LOG2](/#A2)、[LOG3](/#A3)、[LOG4](/#A4)、[SSTORE](/#55)、[SELFDESTRUCT](/#FF)、 [EOFCREATE](/#EC)，以及 [CALL](/#F1) 或 [EXTCALL](/#F8)（如果发送的 [value](/#34) 不为 0）。
+
+如果 [return data](/about) 的大小未知，也可以在调用后使用指令 [RETURNDATASIZE](/#3D) 和 [RETURNDATACOPY](/#3E) 检索（自 Byzantium 分叉以来）。
+
+从 Tangerine Whistle 分叉开始，“gas”除了当前上下文剩余 Gas 的 64 分之一（“remaining_gas /64”）外，完全受到限制。如果调用尝试发送更多内容，则“gas”将更改以匹配允许的最大值。
+
+EOFv1 代码中不允许，包含此指令的代码将无法通过验证。
+
+## 堆栈输入
+
+0. `gas`：发送到子[context](/about)执行的gas量。子上下文没有使用的gas会返回给这个。
+1. `address`: [context](/about) 执行的账户。
+2. `argsOffset`：子[上下文](/about)的[calldata](/about)中[内存](/about)中的字节偏移量(以字节为单位)。
+3. `argsSize`：要复制的字节大小（[calldata](/about) 的大小）。
+4. `retOffset`: [内存](/about)中的字节偏移量(以字节为单位)，用于存储子[上下文](/about)的[返回数据](/about)。
+5. `retSize`：要复制的字节大小（[返回数据](/about) 的大小）。
+
+## 堆栈输出
+
+0. `success`: 如果子 [context](/about) [reverted](/#FD) 返回 0，否则返回 1。
+
+## 错误情况
+
+在以下情况下，当前上下文所做的状态更改会被[reverted](#FD)：
+- Gas 不足。
+- 堆栈上的值不足。

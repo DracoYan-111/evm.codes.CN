@@ -1,0 +1,2276 @@
+{
+  "10": {
+    "input": "a | b",
+    "output": "a < b",
+    "description": "小于比较"
+  },
+  "11": {
+    "input": "a | b",
+    "output": "a > b",
+    "description": "大于比较"
+  },
+  "12": {
+    "input": "a | b",
+    "output": "a < b",
+    "description": "有符号小于比较"
+  },
+  "13": {
+    "input": "a | b",
+    "output": "a > b",
+    "description": "有符号大于比较"
+  },
+  "14": {
+    "input": "a | b",
+    "output": "a == b",
+    "description": "相等比较"
+  },
+  "15": {
+    "input": "a",
+    "output": "a == 0",
+    "description": "是否为零比较"
+  },
+  "16": {
+    "input": "a | b",
+    "output": "a & b",
+    "description": "按位与运算"
+  },
+  "17": {
+    "input": "a | b",
+    "output": "a \\| b",
+    "description": "按位或运算"
+  },
+  "18": {
+    "input": "a | b",
+    "output": "a ^ b",
+    "description": "按位异或运算"
+  },
+  "19": {
+    "input": "a",
+    "output": "~a",
+    "description": "按位非运算"
+  },
+  "20": {
+    "input": "offset | size",
+    "output": "hash",
+    "description": "计算 Keccak-256 哈希",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "21": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "22": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "23": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "24": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "25": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "26": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "27": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "28": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "29": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "30": {
+    "input": "",
+    "output": "address",
+    "description": "获取当前执行账户地址"
+  },
+  "31": {
+    "input": "address",
+    "output": "balance",
+    "description": "获取指定账户的余额",
+    "dynamicFee": {
+      "berlin": {
+        "inputs": {
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          }
+        }
+      }
+    }
+  },
+  "32": {
+    "input": "",
+    "output": "address",
+    "description": "获取执行的发起地址"
+  },
+  "33": {
+    "input": "",
+    "output": "address",
+    "description": "获取调用者地址"
+  },
+  "34": {
+    "input": "",
+    "output": "value",
+    "description": "获取此执行相关的指令或交易所存入的金额"
+  },
+  "35": {
+    "input": "i",
+    "output": "data[i]",
+    "description": "获取当前环境的输入数据"
+  },
+  "36": {
+    "input": "",
+    "output": "size",
+    "description": "获取当前环境输入数据的大小"
+  },
+  "37": {
+    "input": "destOffset | offset | size",
+    "output": "",
+    "description": "将当前环境输入数据拷贝到内存",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: destOffset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "38": {
+    "input": "",
+    "output": "size",
+    "description": "获取当前环境中运行代码的大小"
+  },
+  "39": {
+    "input": "destOffset | offset | size",
+    "output": "",
+    "description": "将当前环境中运行代码拷贝到内存",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: destOffset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "40": {
+    "input": "blockNumber",
+    "output": "hash",
+    "description": "获取最近的256个完整区块中某个区块的哈希"
+  },
+  "41": {
+    "input": "",
+    "output": "address",
+    "description": "获取区块的受益人矿工地址"
+  },
+  "42": {
+    "input": "",
+    "output": "timestamp",
+    "description": "获取区块时间戳"
+  },
+  "43": {
+    "input": "",
+    "output": "blockNumber",
+    "description": "获取区块高度(编号)"
+  },
+  "44": {
+    "input": "",
+    "output": "difficulty",
+    "description": "获取区块难度"
+  },
+  "45": {
+    "input": "",
+    "output": "gasLimit",
+    "description": "获取区块的 gas 限制"
+  },
+  "46": {
+    "input": "",
+    "output": "chainId",
+    "description": "获取链 ID"
+  },
+  "47": {
+    "input": "",
+    "output": "balance",
+    "description": "获取当前执行账户的余额"
+  },
+  "48": {
+    "input": "",
+    "output": "baseFee",
+    "description": "获取基础费用 (base fee)"
+  },
+  "49": {
+    "input": "index",
+    "output": "blobVersionedHashesAtIndex",
+    "description": "获取带版本号的哈希值列表"
+  },
+  "50": {
+    "input": "y",
+    "output": "",
+    "description": "从堆栈中移除项"
+  },
+  "51": {
+    "input": "offset",
+    "output": "value",
+    "description": "从内存中加载字 (word)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "52": {
+    "input": "offset | value",
+    "output": "",
+    "description": "将字 (word) 保存到内存",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "53": {
+    "input": "offset | value",
+    "output": "",
+    "description": "将单字节保存到内存",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "54": {
+    "input": "key",
+    "output": "value",
+    "description": "从存储 (storage) 中加载字",
+    "dynamicFee": {
+      "berlin": {
+        "inputs": {
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'key' is cold?"
+          }
+        }
+      }
+    }
+  },
+  "55": {
+    "input": "key | value",
+    "output": "",
+    "description": "将字保存到存储 (storage)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "newValue": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "currentValue": {
+            "type": "number",
+            "label": "State: current value in storage"
+          }
+        }
+      },
+      "constantinople": {
+        "inputs": {
+          "newValue": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "currentValue": {
+            "type": "number",
+            "label": "State: current value in storage"
+          },
+          "originalValue": {
+            "type": "number",
+            "label": "State: original value before the current transaction"
+          }
+        }
+      },
+      "petersburg": {
+        "inputs": {
+          "newValue": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "currentValue": {
+            "type": "number",
+            "label": "State: current value in storage"
+          }
+        }
+      },
+      "istanbul": {
+        "inputs": {
+          "newValue": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "currentValue": {
+            "type": "number",
+            "label": "State: current value in storage"
+          },
+          "originalValue": {
+            "type": "number",
+            "label": "State: original value before the current transaction"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "newValue": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "currentValue": {
+            "type": "number",
+            "label": "State: current value in storage"
+          },
+          "originalValue": {
+            "type": "number",
+            "label": "State: original value before the current transaction"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'key' is cold?"
+          }
+        }
+      }
+    }
+  },
+  "56": {
+    "input": "counter",
+    "output": "",
+    "description": "修改程序计数器 (PC)"
+  },
+  "57": {
+    "input": "counter | b",
+    "output": "",
+    "description": "有条件地修改程序计数器"
+  },
+  "58": {
+    "input": "",
+    "output": "counter",
+    "description": "获取此指令递增前的程序计数器值"
+  },
+  "59": {
+    "input": "",
+    "output": "size",
+    "description": "获取当前活动内存的大小(字节数)"
+  },
+  "60": {
+    "input": "",
+    "output": "value",
+    "description": "将 1 字节项压入堆栈"
+  },
+  "61": {
+    "input": "",
+    "output": "value",
+    "description": "将 2 字节项压入堆栈"
+  },
+  "62": {
+    "input": "",
+    "output": "value",
+    "description": "将 3 字节项压入堆栈"
+  },
+  "63": {
+    "input": "",
+    "output": "value",
+    "description": "将 4 字节项压入堆栈"
+  },
+  "64": {
+    "input": "",
+    "output": "value",
+    "description": "将 5 字节项压入堆栈"
+  },
+  "65": {
+    "input": "",
+    "output": "value",
+    "description": "将 6 字节项压入堆栈"
+  },
+  "66": {
+    "input": "",
+    "output": "value",
+    "description": "将 7 字节项压入堆栈"
+  },
+  "67": {
+    "input": "",
+    "output": "value",
+    "description": "将 8 字节项压入堆栈"
+  },
+  "68": {
+    "input": "",
+    "output": "value",
+    "description": "将 9 字节项压入堆栈"
+  },
+  "69": {
+    "input": "",
+    "output": "value",
+    "description": "将 10 字节项压入堆栈"
+  },
+  "70": {
+    "input": "",
+    "output": "value",
+    "description": "将 17 字节项压入堆栈"
+  },
+  "71": {
+    "input": "",
+    "output": "value",
+    "description": "将 18 字节项压入堆栈"
+  },
+  "72": {
+    "input": "",
+    "output": "value",
+    "description": "将 19 字节项压入堆栈"
+  },
+  "73": {
+    "input": "",
+    "output": "value",
+    "description": "将 20 字节项压入堆栈"
+  },
+  "74": {
+    "input": "",
+    "output": "value",
+    "description": "将 21 字节项压入堆栈"
+  },
+  "75": {
+    "input": "",
+    "output": "value",
+    "description": "将 22 字节项压入堆栈"
+  },
+  "76": {
+    "input": "",
+    "output": "value",
+    "description": "将 23 字节项压入堆栈"
+  },
+  "77": {
+    "input": "",
+    "output": "value",
+    "description": "将 24 字节项压入堆栈"
+  },
+  "78": {
+    "input": "",
+    "output": "value",
+    "description": "将 25 字节项压入堆栈"
+  },
+  "79": {
+    "input": "",
+    "output": "value",
+    "description": "将 26 字节项压入堆栈"
+  },
+  "80": {
+    "input": "value",
+    "output": "value | value",
+    "description": "复制堆栈上第 1 个值"
+  },
+  "81": {
+    "input": "a | b",
+    "output": "b | a | b",
+    "description": "复制堆栈上第 2 个值"
+  },
+  "82": {
+    "input": "a | b | c",
+    "output": "c | a | b | c",
+    "description": "复制堆栈上第 3 个值"
+  },
+  "83": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 4 个值"
+  },
+  "84": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 5 个值"
+  },
+  "85": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 6 个值"
+  },
+  "86": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 7 个值"
+  },
+  "87": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 8 个值"
+  },
+  "88": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 9 个值"
+  },
+  "89": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 10 个值"
+  },
+  "90": {
+    "input": "a | b",
+    "output": "b | a",
+    "description": "交换堆栈上第 1 个与第 2 个值"
+  },
+  "91": {
+    "input": "a | b | c",
+    "output": "c | b | a",
+    "description": "交换堆栈上第 1 个与第 3 个值"
+  },
+  "92": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 4 个值"
+  },
+  "93": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 5 个值"
+  },
+  "94": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 6 个值"
+  },
+  "95": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 7 个值"
+  },
+  "96": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 8 个值"
+  },
+  "97": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 9 个值"
+  },
+  "98": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 10 个值"
+  },
+  "99": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 11 个值"
+  },
+  "00": {
+    "input": "",
+    "output": "",
+    "description": "停止执行"
+  },
+  "01": {
+    "input": "a | b",
+    "output": "a + b",
+    "description": "加法运算"
+  },
+  "02": {
+    "input": "a | b",
+    "output": "a * b",
+    "description": "乘法运算"
+  },
+  "03": {
+    "input": "a | b",
+    "output": "a - b",
+    "description": "减法运算"
+  },
+  "04": {
+    "input": "a | b",
+    "output": "a // b",
+    "description": "整数除法运算"
+  },
+  "05": {
+    "input": "a | b",
+    "output": "a // b",
+    "description": "有符号整数除法运算(截断)"
+  },
+  "06": {
+    "input": "a | b",
+    "output": "a % b",
+    "description": "取模运算"
+  },
+  "07": {
+    "input": "a | b",
+    "output": "a % b",
+    "description": "有符号取模运算"
+  },
+  "08": {
+    "input": "a | b | N",
+    "output": "(a + b) % N",
+    "description": "模加运算"
+  },
+  "09": {
+    "input": "a | b | N",
+    "output": "(a * b) % N",
+    "description": "模乘运算"
+  },
+  "0a": {
+    "input": "a | exponent",
+    "output": "a ** exponent",
+    "description": "指数运算",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "exponent": {
+            "type": "number",
+            "label": "Input: exponent"
+          }
+        }
+      }
+    }
+  },
+  "0b": {
+    "input": "b | x",
+    "output": "y",
+    "description": "扩展二进制补码有符号整数的长度"
+  },
+  "0c": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "0d": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "0e": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "0f": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "1a": {
+    "input": "i | x",
+    "output": "y",
+    "description": "从字中提取单字节"
+  },
+  "1b": {
+    "input": "shift | value",
+    "output": "value << shift",
+    "description": "左移运算"
+  },
+  "1c": {
+    "input": "shift | value",
+    "output": "value >> shift",
+    "description": "逻辑右移运算"
+  },
+  "1d": {
+    "input": "shift | value",
+    "output": "value >> shift",
+    "description": "算术(有符号)右移运算"
+  },
+  "1e": {
+    "input": "x",
+    "output": "clz(x)",
+    "description": "计算前导零的位数"
+  },
+  "1f": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "2a": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "2b": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "2c": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "2d": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "2e": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "2f": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "3a": {
+    "input": "",
+    "output": "price",
+    "description": "获取当前环境的 gas 价格"
+  },
+  "3b": {
+    "input": "address",
+    "output": "size",
+    "description": "获取账户的代码大小",
+    "dynamicFee": {
+      "berlin": {
+        "inputs": {
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          }
+        }
+      }
+    }
+  },
+  "3c": {
+    "input": "address | destOffset | offset | size",
+    "output": "",
+    "description": "将账户的代码复制到内存",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: destOffset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: destOffset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          }
+        }
+      }
+    }
+  },
+  "3d": {
+    "input": "",
+    "output": "size",
+    "description": "获取当前环境中上一次调用的输出数据大小"
+  },
+  "3e": {
+    "input": "destOffset | offset | size",
+    "output": "",
+    "description": "将上一次调用的输出数据复制到内存",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: destOffset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "3f": {
+    "input": "address",
+    "output": "hash",
+    "description": "获取账户的代码哈希",
+    "dynamicFee": {
+      "berlin": {
+        "inputs": {
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          }
+        }
+      }
+    }
+  },
+  "44_merge": {
+    "input": "",
+    "output": "prevRandao",
+    "description": "获取上一个区块的 RANDAO 混合值"
+  },
+  "4a": {
+    "input": "",
+    "output": "blobBaseFee",
+    "description": "返回当前区块的 blob 基础费用值"
+  },
+  "4b": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "4c": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "4d": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "4e": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "4f": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "5a": {
+    "input": "",
+    "output": "gas",
+    "description": "获取可用 gas 量，包括减去该指令成本后的值"
+  },
+  "5b": {
+    "input": "",
+    "output": "",
+    "description": "标记一个有效的跳转目的地"
+  },
+  "5c": {
+    "input": "key",
+    "output": "value",
+    "description": "从瞬态存储 (transient storage) 中加载字"
+  },
+  "5d": {
+    "input": "key | value",
+    "output": "",
+    "description": "将字保存到瞬态存储 (transient storage)"
+  },
+  "5e": {
+    "input": "destOffset | offset | size",
+    "output": "",
+    "description": "复制内存区域",
+    "dynamicFee": {
+      "cancun": {
+        "inputs": {
+          "destOffset": {
+            "type": "number",
+            "label": "Input: destination offset"
+          },
+          "offset": {
+            "type": "number",
+            "label": "Input: input offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "5f": {
+    "input": "",
+    "output": "0",
+    "description": "将值 0 压入堆栈"
+  },
+  "6a": {
+    "input": "",
+    "output": "value",
+    "description": "将 11 字节项压入堆栈"
+  },
+  "6b": {
+    "input": "",
+    "output": "value",
+    "description": "将 12 字节项压入堆栈"
+  },
+  "6c": {
+    "input": "",
+    "output": "value",
+    "description": "将 13 字节项压入堆栈"
+  },
+  "6d": {
+    "input": "",
+    "output": "value",
+    "description": "将 14 字节项压入堆栈"
+  },
+  "6e": {
+    "input": "",
+    "output": "value",
+    "description": "将 15 字节项压入堆栈"
+  },
+  "6f": {
+    "input": "",
+    "output": "value",
+    "description": "将 16 字节项压入堆栈"
+  },
+  "7a": {
+    "input": "",
+    "output": "value",
+    "description": "将 27 字节项压入堆栈"
+  },
+  "7b": {
+    "input": "",
+    "output": "value",
+    "description": "将 28 字节项压入堆栈"
+  },
+  "7c": {
+    "input": "",
+    "output": "value",
+    "description": "将 29 字节项压入堆栈"
+  },
+  "7d": {
+    "input": "",
+    "output": "value",
+    "description": "将 30 字节项压入堆栈"
+  },
+  "7e": {
+    "input": "",
+    "output": "value",
+    "description": "将 31 字节项压入堆栈"
+  },
+  "7f": {
+    "input": "",
+    "output": "value",
+    "description": "将 32 字节项压入堆栈"
+  },
+  "8a": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 11 个值"
+  },
+  "8b": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 12 个值"
+  },
+  "8c": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 13 个值"
+  },
+  "8d": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 14 个值"
+  },
+  "8e": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 15 个值"
+  },
+  "8f": {
+    "input": "... | value",
+    "output": "value | ... | value",
+    "description": "复制堆栈上第 16 个值"
+  },
+  "9a": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 12 个值"
+  },
+  "9b": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 13 个值"
+  },
+  "9c": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 14 个值"
+  },
+  "9d": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 15 个值"
+  },
+  "9e": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 16 个值"
+  },
+  "9f": {
+    "input": "a | ... | b",
+    "output": "b | ... | a",
+    "description": "交换堆栈上第 1 个与第 17 个值"
+  },
+  "a0": {
+    "input": "offset | size",
+    "output": "",
+    "description": "追加不带主题的日志记录",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "a1": {
+    "input": "offset | size | topic",
+    "output": "",
+    "description": "追加包含 1 个主题的日志记录",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "a2": {
+    "input": "offset | size | topic1 | topic2",
+    "output": "",
+    "description": "追加包含 2 个主题的日志记录",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "a3": {
+    "input": "offset | size | topic1 | topic2 | topic3",
+    "output": "",
+    "description": "追加包含 3 个主题的日志记录",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "a4": {
+    "input": "offset | size | topic1 | topic2 | topic3 | topic4",
+    "output": "",
+    "description": "追加包含 4 个主题的日志记录",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "a5": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "a6": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "a7": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "a8": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "a9": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "aa": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ab": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ac": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ad": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ae": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "af": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b0": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b1": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b2": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b3": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b4": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b5": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b6": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b7": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b8": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "b9": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ba": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "bb": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "bc": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "bd": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "be": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "bf": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c0": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c1": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c2": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c3": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c4": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c5": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c6": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c7": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c8": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "c9": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ca": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "cb": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "cc": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "cd": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ce": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "cf": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "d0": {
+    "input": "offset",
+    "output": "data",
+    "description": "从 EOF 容器的数据段加载 32 字节字到堆栈"
+  },
+  "d1": {
+    "input": "",
+    "output": "data",
+    "description": "从给定偏移量的 EOF 容器数据段中加载 32 字节字到堆栈"
+  },
+  "d2": {
+    "input": "",
+    "output": "size",
+    "description": "将数据段大小压入堆栈"
+  },
+  "d3": {
+    "input": "mem_offset | offset | size",
+    "output": "",
+    "description": "将数据段的某一部分复制到内存",
+    "dynamicFee": {
+      "EOF": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: memory offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "d4": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "d5": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "d6": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "d7": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "d8": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "d9": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "da": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "db": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "dc": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "dd": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "de": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "df": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "e0": {
+    "input": "",
+    "output": "",
+    "description": "将程序计数器修改为相对偏移"
+  },
+  "e1": {
+    "input": "condition",
+    "output": "",
+    "description": "有条件地将程序计数器修改为相对偏移"
+  },
+  "e2": {
+    "input": "case",
+    "output": "",
+    "description": "修改程序计数器以跳转到跳转表中的相对偏移"
+  },
+  "e3": {
+    "input": "",
+    "output": "",
+    "description": "调用函数"
+  },
+  "e4": {
+    "input": "",
+    "output": "",
+    "description": "从函数返回"
+  },
+  "e5": {
+    "input": "",
+    "output": "",
+    "description": "在不增加新返回堆栈帧的情况下链接调用函数"
+  },
+  "e6": {
+    "input": "",
+    "output": "",
+    "description": "复制位于堆栈顶部的项"
+  },
+  "e7": {
+    "input": "",
+    "output": "",
+    "description": "将堆栈项与顶部堆栈项交换"
+  },
+  "e8": {
+    "input": "",
+    "output": "",
+    "description": "交换堆栈项目的第一和第二个半字节 (nibbles)"
+  },
+  "e9": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ea": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "eb": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ec": {
+    "input": "value | salt | input_offset | input_size",
+    "output": "address",
+    "description": "使用给定索引处的 EOF 容器创建一个合约",
+    "dynamicFee": {
+      "EOF": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "containerSize": {
+            "type": "number",
+            "label": "State: container size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated deployment execution cost"
+          },
+          "deployedSize": {
+            "type": "number",
+            "label": "Estimated deployed code size in bytes"
+          }
+        }
+      }
+    }
+  },
+  "ed": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "ee": {
+    "input": "aux_data_offset | aux_data_size",
+    "output": "",
+    "description": "将容器部署到一个地址",
+    "dynamicFee": {
+      "EOF": {
+        "inputs": {
+          "auxDataOffset": {
+            "type": "number",
+            "label": "Input: auxiliary data offset"
+          },
+          "auxDataSize": {
+            "type": "number",
+            "label": "Input: auxiliary data size in bytes"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "ef": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "f0": {
+    "input": "value | offset | size",
+    "output": "address",
+    "description": "创建带有相关代码的新账户 (CREATE)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated deployment execution cost"
+          },
+          "deployedSize": {
+            "type": "number",
+            "label": "Estimated deployed code size in bytes"
+          }
+        }
+      }
+    }
+  },
+  "f1": {
+    "input": "gas | address | value | argsOffset | argsSize | retOffset | retSize",
+    "output": "success",
+    "description": "对某个账户发起消息调用 (CALL)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "value": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: Current memory size"
+          },
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the called account new?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      },
+      "spuriousDragon": {
+        "inputs": {
+          "value": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the called account empty?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "value": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          },
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the called account empty?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "f2": {
+    "input": "gas | address | value | argsOffset | argsSize | retOffset | retSize",
+    "output": "success",
+    "description": "使用替代账户的代码对此账户发起消息调用 (CALLCODE)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "value": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "value": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "f3": {
+    "input": "offset | size",
+    "output": "",
+    "description": "停止执行并返回输出数据 (RETURN)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "f4": {
+    "input": "gas | address | argsOffset | argsSize | retOffset | retSize",
+    "output": "success",
+    "description": "使用替代账户的代码对此账户发起消息调用，但保留发送者(sender)和金额(value)的当前值 (DELEGATECALL)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "f5": {
+    "input": "value | offset | size | salt",
+    "output": "address",
+    "description": "在一个可预测的地址处创建带有相关代码的新账户 (CREATE2)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated deployment execution cost"
+          },
+          "deployedSize": {
+            "type": "number",
+            "label": "Estimated deployed code size in bytes"
+          }
+        }
+      }
+    }
+  },
+  "f6": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "f7": {
+    "input": "offset",
+    "output": "data",
+    "description": "将返回数据中特定偏移量处的 32 字节字压入堆栈"
+  },
+  "f8": {
+    "input": "target_address | input_offset | input_size | value",
+    "output": "status",
+    "description": "CALL 指令的简易等效替代",
+    "dynamicFee": {
+      "EOF": {
+        "inputs": {
+          "value": {
+            "type": "number",
+            "label": "Input: value"
+          },
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'targetAddress' is cold?"
+          },
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the called account empty?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "f9": {
+    "input": "target_address | input_offset | input_size",
+    "output": "status",
+    "description": "DELEGATECALL 指令的简易等效替代",
+    "dynamicFee": {
+      "EOF": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'targetAddress' is cold?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "fa": {
+    "input": "gas | address | argsOffset | argsSize | retOffset | retSize",
+    "output": "success",
+    "description": "对账户发起静态消息调用 (STATICCALL)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "argsOffset": {
+            "type": "number",
+            "label": "Input: argsOffset"
+          },
+          "argsSize": {
+            "type": "number",
+            "label": "Input: argsSize"
+          },
+          "retOffset": {
+            "type": "number",
+            "label": "Input: retOffset"
+          },
+          "retSize": {
+            "type": "number",
+            "label": "Input: retSize"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "fb": {
+    "input": "target_address | input_offset | input_size",
+    "output": "status",
+    "description": "STATICCALL 指令的简易等效替代",
+    "dynamicFee": {
+      "EOF": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'targetAddress' is cold?"
+          },
+          "executionCost": {
+            "type": "number",
+            "label": "Estimated execution cost"
+          }
+        }
+      }
+    }
+  },
+  "fc": {
+    "input": "",
+    "output": "",
+    "description": ""
+  },
+  "fd": {
+    "input": "offset | size",
+    "output": "",
+    "description": "停止执行并回滚状态更改，但返回数据和剩余的 gas (REVERT)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "offset": {
+            "type": "number",
+            "label": "Input: offset"
+          },
+          "size": {
+            "type": "number",
+            "label": "Input: size"
+          },
+          "memorySize": {
+            "type": "number",
+            "label": "State: current memory size"
+          }
+        }
+      }
+    }
+  },
+  "fe": {
+    "input": "",
+    "output": "",
+    "description": "指定的无效指令 (INVALID)",
+    "dynamicFee": {
+      "homestead": {
+        "inputs": {
+          "remaining": {
+            "type": "number",
+            "label": "State: remaining gas in the current context"
+          }
+        }
+      }
+    }
+  },
+  "ff": {
+    "input": "address",
+    "output": "",
+    "description": "停止执行并标记账户以备日后删除，或将所有 Ether 发送到某地址 (SELFDESTRUCT)",
+    "dynamicFee": {
+      "homestead": {},
+      "tangerineWhistle": {
+        "inputs": {
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the beneficiary account new?"
+          }
+        }
+      },
+      "spuriousDragon": {
+        "inputs": {
+          "hasNoBalance": {
+            "type": "boolean",
+            "label": "State: is the current account balance empty?"
+          },
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the beneficiary account empty?"
+          }
+        }
+      },
+      "berlin": {
+        "inputs": {
+          "hasNoBalance": {
+            "type": "boolean",
+            "label": "State: is the current account balance empty?"
+          },
+          "empty": {
+            "type": "boolean",
+            "label": "State: is the beneficiary account empty?"
+          },
+          "cold": {
+            "type": "boolean",
+            "label": "State: 'address' is cold?"
+          }
+        }
+      }
+    }
+  }
+}
